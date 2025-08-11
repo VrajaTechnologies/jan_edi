@@ -65,7 +65,8 @@
                             <field name="additional_search_domain"
                                    placeholder="[('state', 'in', ['draft', 'sent']), ('amount_total', '>', 1000)]"
                                    invisible="edi_type != 'Outgoing' or main_table != True"/>
-                            <field name="server_type" required="main_table == True" invisible="main_table == False"/>
+                            <field name="server_type" required="main_table == True and edi_type == 'Outgoing'"
+                                   invisible="edi_type != 'Outgoing' or main_table != True"/>
                             <field name="partner_id" invisible="edi_type != 'Outgoing' or main_table != True"/>
                             <field name="export_ftp_folder" invisible="edi_type  != 'Outgoing' or main_table != True"
                                    required="edi_type == 'Outgoing' and main_table == True"/>
