@@ -62,7 +62,8 @@ class EDIConfigTable(models.Model):
     )
     model_id = fields.Many2one(
         comodel_name='ir.model',
-        string="Odoo Model"
+        string="Odoo Model",
+        tracking=True
     )
     file_type = fields.Selection(
         selection=[('single', 'In one file one record'), ('multiple', 'In one file multiple records')],
@@ -92,11 +93,13 @@ class EDIConfigTable(models.Model):
         default=10
     )
     xml_header = fields.Char(
-        string="XML Header"
+        string="XML Header",
+        tracking=True
     )
     multiple_records_element = fields.Char(
         string="Export Multiple Record's XML Element Name",
-        help="When you export multiple records in one file at that time you need to provide XML element for those multiple records."
+        help="When you export multiple records in one file at that time you need to provide XML element for those multiple records.",
+        tracking=True
     )
     company_id = fields.Many2one(
         comodel_name="res.company",
@@ -110,7 +113,8 @@ class EDIConfigTable(models.Model):
     )
     edi_type = fields.Selection(
         selection=[('Incoming', 'Incoming'), ('Outgoing', 'Outgoing')],
-        string="Type"
+        string="Type",
+        tracking=True
     )
     main_table = fields.Boolean(
         string="Main Table",
@@ -132,7 +136,8 @@ class EDIConfigTable(models.Model):
         comodel_name="ftp.list",
         string="Export file to FTP/SFTP Directory",
         copy=False,
-        domain="[('server_type','=',server_type)]"
+        domain="[('server_type','=',server_type)]",
+        tracking=True
     )
     additional_search_domain = fields.Char(
         string='Add additional search domain',
