@@ -48,6 +48,7 @@
                             <field name="location_id"
                                    invisible="field_for_location_visible == False"
                                    required="field_for_location_visible == True"/>
+                            <field name="edi_type" required="1"/>
                             <field name="main_table"/>
                             <field name="file_type"
                                    required="main_table == True" invisible="main_table == False"/>
@@ -56,17 +57,17 @@
                             <field name="multiple_records_element"
                                    required="file_type == 'multiple' and edi_type == 'Outgoing'"
                                    invisible="file_type != 'multiple' or edi_type != 'Outgoing'"/>
-                            <field name="search_record_from_this_value" style="text-transform: uppercase;"/>
                         </group>
                         <group>
+                            <field name="search_record_from_this_value" invisible="edi_type != 'Incoming'"
+                                   style="text-transform: uppercase;"/>
                             <field name="default_value" placeholder="{'warehouse_id': 3}"/>
                             <field name="additional_search_domain"
                                    placeholder="[('state', 'in', ['draft', 'sent']), ('amount_total', '>', 1000)]"
-                                   invisible="edi_type != 'Outgoing'"/>
-                            <field name="edi_type" required="1"/>
+                                   invisible="edi_type != 'Outgoing' or main_table != True"/>
                             <field name="server_type" required="main_table == True" invisible="main_table == False"/>
-                            <field name="partner_id" invisible="edi_type != 'Outgoing'"/>
-                            <field name="export_ftp_folder" invisible="edi_type  != 'Outgoing'"
+                            <field name="partner_id" invisible="edi_type != 'Outgoing' or main_table != True"/>
+                            <field name="export_ftp_folder" invisible="edi_type  != 'Outgoing' or main_table != True"
                                    required="edi_type == 'Outgoing' and main_table == True"/>
                         </group>
                     </group>
