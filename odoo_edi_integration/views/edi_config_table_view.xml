@@ -44,14 +44,14 @@
                         <group>
                             <field name="name"/>
                             <field name="company_id"/>
-                            <field name="main_table"/>
                             <field name="model_id" required="1"/>
-                            <field name="file_type"
-                                   required="main_table == True" invisible="main_table == False"/>
-                            <field name="field_for_location_visible" invisible="1"/>
                             <field name="location_id"
                                    invisible="field_for_location_visible == False"
                                    required="field_for_location_visible == True"/>
+                            <field name="main_table"/>
+                            <field name="file_type"
+                                   required="main_table == True" invisible="main_table == False"/>
+                            <field name="field_for_location_visible" invisible="1"/>
                             <field name="xml_header" required="main_table == True" invisible="main_table == False"/>
                             <field name="multiple_records_element"
                                    required="file_type == 'multiple' and edi_type == 'Outgoing'"
@@ -64,7 +64,7 @@
                                    placeholder="[('state', 'in', ['draft', 'sent']), ('amount_total', '>', 1000)]"
                                    invisible="edi_type != 'Outgoing'"/>
                             <field name="edi_type" required="1"/>
-                            <field name="server_type" required="1"/>
+                            <field name="server_type" required="main_table == True" invisible="main_table == False"/>
                             <field name="partner_id" invisible="edi_type != 'Outgoing'"/>
                             <field name="export_ftp_folder" invisible="edi_type  != 'Outgoing'"
                                    required="edi_type == 'Outgoing' and main_table == True"/>
