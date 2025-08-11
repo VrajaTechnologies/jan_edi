@@ -1,0 +1,113 @@
+.container {
+    max-width: 1460px;
+}
+.ss_img img {
+    width: 80%;
+    margin-bottom: 40px;
+    height: auto;
+    /* border: 4px solid  #714b67; */
+    border-radius: 10px;
+}
+h5.feature_prg {
+    padding-top: 10px;
+    margin-bottom: 0px;
+}
+
+.feature_col{
+    margin-bottom: 70px !important;
+}
+/* img.img.img-responsive.center-block {
+    width: 96%;
+} */
+@media only screen and (max-width:1024px) {
+.extracol{
+display: none !important;
+}
+.carousel-control-prev  {
+    margin-left: -20px;
+}
+.carousel-control-next{
+  margin-right: -20px;
+}
+section.features {
+    margin: 80px 40px 0px !important;
+}
+.features_part .row {
+    padding: 0px 0px !important;
+}
+div#loempia_tabs {
+    padding: 40px 0px 50px !important;
+}
+section.demo_request {
+    margin: 60px 0px !important;
+}
+a.carousel-control-next {
+    right: 30px !important;
+}
+a.carousel-control-prev {
+    margin-left: -10px !important;
+}
+
+}
+
+
+a.show.active {
+    background-color: white !important;
+}
+
+
+
+
+
+
+  
+  
+ 
+  
+  @media only screen and (max-width: 767px) {
+  
+  section.shipstation {
+      padding: 20px 8px !important;
+  }
+  .shipstation span {
+      padding-left: 0px !important;
+  }
+  .Inventory_name {
+      text-align: center !important;
+  }
+  section.features {
+      margin: 80px 10px 0px !important;
+  }
+  section.demo_request {
+      margin: 60px 0px 60px !important;
+  }
+  .deep_hover.shadow {
+      padding: 4px 22px !important;
+  }
+  .col-lg-6.col-md-6.demo_margin {
+      padding-left: 0px !important;
+  }
+  div#loempia_tabs {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+  }
+  ul.nav.nav-tabs.justify-content-center {
+      text-align: start;
+      justify-content: flex-start !important;
+  }
+  .tabs_views {
+      padding: 0px !important;
+      padding-top: 40px !important;
+  }
+  .threelink .d-inline-block.mx-3.my-3{
+    margin: 0px !important;
+  }
+  .carousel-control-next, .carousel-control-prev{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .features_part .row {
+    padding: 0px 30px !important;
+}
+  
+  }

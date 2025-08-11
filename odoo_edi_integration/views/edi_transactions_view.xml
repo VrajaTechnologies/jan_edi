@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="edi_transactions_tree" model="ir.ui.view">
+        <field name="name">edi.transactions.tree</field>
+        <field name="model">edi.transactions</field>
+        <field name="arch" type="xml">
+            <tree create="false">
+                <field name="name"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="edi_transactions_form" model="ir.ui.view">
+        <field name="name">edi.transactions.form</field>
+        <field name="model">edi.transactions</field>
+        <field name="arch" type="xml">
+            <form string="EDI Transactions" create="false">
+                <header>
+                    <button name="process" string="Process" type="object" invisible="state != 'Draft'"/>
+                    <button name="recompute_xml" string="Re-Compute" type="object"
+                            invisible="state != 'Failed' or edi_type != 'Outgoing'"/>
+                    <button name="reset" string="Set to Draft" type="object" invisible="state not in ['Failed','Done','Partially_Done']"/>
+                    <field name="state" widget="statusbar" statusbar_visible="Draft,Failed,Done,Partially_Done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="state != 'Draft'"/>
+                            <field name="edi_type" readonly="1"/>
+                            <field name="edi_partner_id" readonly="state == 'Done'"/>
+                            <field name="edi_config_table_id" readonly="1"
+                                   domain="[('edi_type','=',edi_type),('main_table','=',True)]"
+                                   options="{'no_create': True}"/>
+                        </group>
+                        <group>
+                            <field name="file_type" invisible="1"/>
+                            <field name="reference" readonly="1"
+                                   invisible="file_type == 'multiple'"/>
+                            <field name="ftp_attachment_id" readonly="1"/>
+                            <field name="log_id" readonly="1"
+                                   invisible="state not in ['Failed', 'Partially_Done']"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Parsed content">
+                            <field name="xml_content" readonly="state == 'Done'"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="edi_transactions_action" model="ir.actions.act_window">
+        <field name="name">EDI Transactions</field>
+        <field name="res_model">edi.transactions</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="edi_transactions_tree"/>
+        <field name="help">Lists EDI Transactions to process</field>
+        <field name="context">{'group_by': ['edi_type']}</field>
+    </record>
+
+    <menuitem id="menu_item_edi_transactions" name="EDI Transactions"
+              parent="odoo_edi_integration.menu_edi_config_table"
+              action="edi_transactions_action" sequence="2"/>
+
+</odoo>

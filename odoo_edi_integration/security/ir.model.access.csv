@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ftp_syncing,access_ftp_syncing,model_ftp_syncing,,1,1,1,1
+access_ftp_list,ftp_list_group,model_ftp_list,,1,1,1,1
+access_ftp_attachment,ftp_attachment_group,model_ftp_attachment,,1,1,1,1
+access.edi.config.table,access_edi_config_table,model_edi_config_table,,1,1,1,1
+access.edi.config.table.line,access_edi_config_table_line,model_edi_config_table_line,,1,1,1,1
+access.edi.transactions,access_edi_transactions,model_edi_transactions,,1,1,1,1
+access_main_logs,manager_main_logs,model_log_book,,1,1,1,1
+access_logs_line,manager_logs_line,model_log_book_lines,,1,1,1,1
+access_sftp_syncing,access_sftp_syncing,model_sftp_syncing,,1,1,1,1
+access.edi.export.records.wizard,access_edi_export_records_wizard,model_edi_export_records_wizard,base.group_user,1,1,1,1

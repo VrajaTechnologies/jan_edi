@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_log_book_tree_view" model="ir.ui.view">
+            <field name="name">view_log_book_tree_view</field>
+            <field name="model">log.book</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Logs" create='false' edit='false'>
+                    <field name="name"/>
+                    <field name="file_name"/>
+                    <field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_log_book_detail" model="ir.ui.view">
+            <field name="name">view_form_log_book_detail</field>
+            <field name="model">log.book</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Logs" create='false' edit='false'>
+                    <sheet>
+                        <div class="oe_title" name="title">
+                            <h1>
+                                <field string="Name" name="name"/>
+                            </h1>
+                            <group>
+                                <field name="file_name"/>
+                                <field name="create_date"/>
+                            </group>
+                        </div>
+                        <group string="Log Details">
+                            <group>
+                                <field name="log_detail_ids" nolabel="1" colspan="4">
+                                    <tree decoration-danger="fault_operation == 1" string="Main Logs">
+                                        <field name="name"/>
+                                        <field name="fault_operation"/>
+                                        <field name="log_message"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_log_book" model="ir.actions.act_window">
+            <field name="name">Logs</field>
+            <field name="res_model">log.book</field>
+            <field name="view_id" ref="view_log_book_tree_view"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Logs will show here.</p>
+            </field>
+        </record>
+
+        <record id="view_logs_tree_view" model="ir.ui.view">
+            <field name="name">view_logs_tree_view</field>
+            <field name="model">log.book.lines</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Logs Line" create='false' edit='false'>
+                    <field name="name"/>
+                    <field name="log_id"/>
+                    <field name="create_date"/>
+                    <field name="log_message"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_logs_line" model="ir.ui.view">
+            <field name="name">view_form_logs_line</field>
+            <field name="model">log.book.lines</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Logs Line" create='false' edit='false'>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="create_date"/>
+                                <field name="log_message"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_logs_line" model="ir.actions.act_window">
+            <field name="name">Log Line</field>
+            <field name="res_model">log.book.lines</field>
+            <field name="view_id" ref="view_logs_tree_view"/>
+            <field name="domain">[('fault_operation','=',True)]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Logs Lines will show here.</p>
+            </field>
+        </record>
+    </data>
+
+    <menuitem id="menu_edi_logs_details" name="Logs Details"
+              parent="odoo_edi_integration.menu_edi_config_table" sequence="20"/>
+    <menuitem id="menu_item_edi_log" name="Logs" parent="menu_edi_logs_details"
+              action="odoo_edi_integration.action_log_book" sequence="0"/>
+    <menuitem id="menu_item_edi_log_detail" name="Log Line" parent="menu_edi_logs_details"
+              action="odoo_edi_integration.action_logs_line" sequence="1"/>
+
+    <data noupdate="1">
+        <record id="seq_edi_log_main_log" model="ir.sequence">
+            <field name="name">Log Book</field>
+            <field name="code">log.book</field>
+            <field name="padding">5</field>
+            <field name="prefix">Log-</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_edi_log_logs_line" model="ir.sequence">
+            <field name="name">Log Book Lines</field>
+            <field name="code">log.book.lines</field>
+            <field name="padding">5</field>
+            <field name="prefix">Log Line-</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

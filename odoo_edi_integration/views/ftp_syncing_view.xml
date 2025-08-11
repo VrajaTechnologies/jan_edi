@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="ftp_syncing_tree" model="ir.ui.view">
+            <field name="name">ftp.syncing.tree</field>
+            <field name="model">ftp.syncing</field>
+            <field name="arch" type="xml">
+                <tree string="FTP Syncing">
+                    <field name="name"/>
+                    <field name="is_verified"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ftp_syncing_form" model="ir.ui.view">
+            <field name="name">ftp.syncing.form</field>
+            <field name="model">ftp.syncing</field>
+            <field name="arch" type="xml">
+                <form string="FTP Syncing">
+                    <header>
+                        <button name="action_check_ftp_connection" type="object" class="btn-primary"
+                                string="Check Connection" invisible="is_verified == True"/>
+                        <button name="action_check_ftp_disconnect" type="object" class="btn-primary"
+                                string="Disconnect" invisible="is_verified == False"/>
+                        <button name="sync_directory" string="Sync FTP Directories" class="oe_highlight" type="object"
+                                invisible="is_verified == False"/>
+                        <button name="sync_inner_files" string="Sync Inner Files" class="oe_highlight" type="object"
+                                invisible="is_verified == False"/>
+                    </header>
+                    <sheet>
+                        <field name="is_verified" invisible="1"/>
+                        <widget name="web_ribbon" title="Connected" bg_color="bg-success"
+                                invisible="is_verified == False"/>
+                        <widget name="web_ribbon" title="Not Connected" bg_color="bg-danger"
+                                invisible="is_verified == True"/>
+                        <div name="button_box" position="inside">
+                            <button class="oe_stat_button" type="action"
+                                    name="%(odoo_edi_integration.action_edi_ftp_cron_id)d"
+                                    string="Schedule Action"
+                                    icon="fa-clock-o"/>
+                        </div>
+                        <group col="4">
+                            <field name="name" required="1"/>
+                        </group>
+                        <br/>
+                        <br/>
+                        <notebook>
+                            <page string="Credentials" name="FTP_credentials_page">
+                                <group>
+                                    <field name="ftp_url" required="1"/>
+                                    <field name="ftp_port"/>
+                                    <field name="ftp_username" required="1"/>
+                                    <field name="ftp_password" password="True" required="1"/>
+                                </group>
+                            </page>
+                            <page string="Directory Lists" name="directory_lists">
+                                <field name="ftp_directory_ids" nolabel="1" options="{'no_open': True}">
+                                    <tree editable="top" create="false" delete="false">
+                                        <field name="name" width="52%"/>
+                                        <field name="daily_new_file" width="18%"/>
+                                        <field name="download_this" width="10%"/>
+                                        <field name="upload_this" width="10%"/>
+                                        <field name="cron_created" column_invisible="1"/>
+                                        <button name="create_cron" string="Generate Auto Sync" type="object"
+                                                class="oe_highlight" invisible="cron_created == True" width="10%"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_ftp_syncing" model="ir.actions.act_window">
+            <field name="name">FTP Syncing</field>
+            <field name="res_model">ftp.syncing</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_ftp_syncing" name="Sync FTP/SFTP"
+                  web_icon="odoo_edi_integration,static/description/ftp.png"
+                  sequence="11"/>
+
+        <menuitem id="menu_item_ftp_syncing" name="FTP Syncing" parent="menu_ftp_syncing"
+                  action="action_ftp_syncing" sequence="1"/>
+
+    </data>
+</odoo>

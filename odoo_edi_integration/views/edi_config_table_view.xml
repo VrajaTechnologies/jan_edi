@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_edi_config_table_tree" model="ir.ui.view">
+        <field name="name">edi.config.table.tree</field>
+        <field name="model">edi.config.table</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="model_id"/>
+                <field name="edi_type"/>
+                <field name="main_table"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_edi_config_table_form" model="ir.ui.view">
+        <field name="name">edi.config.table.form</field>
+        <field name="model">edi.config.table</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="alert alert-info text-left" role="alert"
+                     invisible="field_for_location_visible == False or main_table == True">
+                    <ul>
+                        <li>
+                            When selecting the Odoo model field as Quants (stock.quant), keep the following points in
+                            mind:
+                        </li>
+                        <ul>
+                            <li>
+                                You must select the Inventory Location to specify the location where the inventory is
+                                being added or updated.
+                            </li>
+                            <li>
+                                There's no need to include location mapping in the mapping table anymore, as it is now
+                                managed through the Inventory Location field.
+                            </li>
+                        </ul>
+                    </ul>
+                </div>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_id"/>
+                            <field name="main_table"/>
+                            <field name="model_id" required="1"/>
+                            <field name="file_type"
+                                   required="main_table == True" invisible="main_table == False"/>
+                            <field name="field_for_location_visible" invisible="1"/>
+                            <field name="location_id"
+                                   invisible="field_for_location_visible == False"
+                                   required="field_for_location_visible == True"/>
+                            <field name="xml_header" required="main_table == True" invisible="main_table == False"/>
+                            <field name="multiple_records_element"
+                                   required="file_type == 'multiple' and edi_type == 'Outgoing'"
+                                   invisible="file_type != 'multiple' or edi_type != 'Outgoing'"/>
+                            <field name="search_record_from_this_value" style="text-transform: uppercase;"/>
+                        </group>
+                        <group>
+                            <field name="default_value" placeholder="{'warehouse_id': 3}"/>
+                            <field name="additional_search_domain"
+                                   placeholder="[('state', 'in', ['draft', 'sent']), ('amount_total', '>', 1000)]"
+                                   invisible="edi_type != 'Outgoing'"/>
+                            <field name="edi_type" required="1"/>
+                            <field name="server_type" required="1"/>
+                            <field name="partner_id" invisible="edi_type != 'Outgoing'"/>
+                            <field name="export_ftp_folder" invisible="edi_type  != 'Outgoing'"
+                                   required="edi_type == 'Outgoing' and main_table == True"/>
+                        </group>
+                    </group>
+                    <notebook name="Notebook">
+                        <page name="mapping_config_records" string="Mapping XML Elements with Fields">
+                            <field name="line_ids" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="xml_element"/>
+                                    <field name="field_to_store_main_model_name" column_invisible="1"/>
+                                    <field name="field_to_store_m2o_model_name" column_invisible="1"/>
+                                    <field name="odoo_field"
+                                           column_invisible="parent.file_type == 'multiple' and parent.edi_type != 'Outgoing' and parent.main_table == True"
+                                           domain="[('model_id', '=', field_to_store_main_model_name)]"/>
+                                    <field name="visible_search_field_for_m2o" column_invisible="1"/>
+                                    <field name="field_of_m2o_field" force_save="1"
+                                           domain="[('model_id', '=', field_to_store_m2o_model_name)]"
+                                           readonly="visible_search_field_for_m2o == False"
+                                           column_invisible="parent.file_type == 'multiple' and parent.edi_type != 'Outgoing' and parent.main_table == True"/>
+                                    <field name="visible_selection_field_for_o2m" column_invisible="1"/>
+                                    <field name="sub_edi_config_table_id" force_save="1"
+                                           domain="[('main_table', '=', False)]"
+                                           readonly="visible_selection_field_for_o2m == False and parent.file_type == 'single'"
+                                           required="visible_selection_field_for_o2m == True or parent.file_type == 'multiple' and parent.edi_type == 'Incoming' and parent.main_table == True"/>
+                                    <field name="required"
+                                           column_invisible="parent.edi_type != 'Outgoing'"/>
+                                    <field name="char_length"
+                                           column_invisible="parent.edi_type != 'Outgoing'"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="edi_config_table_filter" model="ir.ui.view">
+        <field name="name">edi.config.table.filter</field>
+        <field name="model">edi.config.table</field>
+        <field name="arch" type="xml">
+            <search string="Search EDI config Table">
+                <field name="name"/>
+                <filter string="Main Table" name="main_table" domain="[('main_table', '=', True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="edi_config_table_action" model="ir.actions.act_window">
+        <field name="name">Mapping Tables Configuration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">edi.config.table</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_main_table': True}</field>
+    </record>
+
+    <menuitem id="menu_edi_config_table" name="EDI"
+              web_icon="odoo_edi_integration,static/description/edi.png"
+              sequence="11"/>
+
+    <menuitem id="menu_item_config_records_configuration" name="Mapping Tables" parent="menu_edi_config_table"
+              action="edi_config_table_action" sequence="1"/>
+
+</odoo>

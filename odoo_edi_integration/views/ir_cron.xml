@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--cron tree view-->
+        <record id="view_edi_cron_tree_view" model="ir.ui.view">
+            <field name="name">EDI Cron</field>
+            <field name="model">ir.cron</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Schedule Action" create='false'>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_edi_sftp_cron_id" model="ir.actions.act_window">
+            <field name="name">EDI Cron</field>
+            <field name="res_model">ir.cron</field>
+            <field name="view_id" ref="view_edi_cron_tree_view"/>
+            <field name="domain">[('sftp_syncing_id', '=', active_id), ('active', 'in', [True, False])]
+            </field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    EDI Cron will display here
+                </p>
+            </field>
+        </record>
+
+        <record id="action_edi_ftp_cron_id" model="ir.actions.act_window">
+            <field name="name">EDI Cron</field>
+            <field name="res_model">ir.cron</field>
+            <field name="view_id" ref="view_edi_cron_tree_view"/>
+            <field name="domain">[('ftp_syncing_id', '=', active_id), ('active', 'in', [True, False])]
+            </field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    EDI Cron will display here
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

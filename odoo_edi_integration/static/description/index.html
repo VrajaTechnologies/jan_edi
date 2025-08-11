@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="./css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <title>EDI Odoo Integration</title>
+  </head>
+  <body >
+
+    <section>
+        <div class="container">
+          <section class="shipstation" style="margin: 60px 0px 0px;background-color: #F1F1F1 !important ;padding: 20px 50px 1px;border-radius: 20px;">
+              <div class="logo_section">
+                <div>
+                  <div class="row" style=" padding-bottom: 20px;">
+                    <div class="text-center" >
+                      <span>
+                        <img src="./img/Untitled_design-removebg-preview (1).png" class="img img-fluid" width="36%">
+                      </span>
+                    </div>
+                  </div>
+                  <div class="Inventory_name" style="text-align: end;">
+                      <span style="padding-left: 20px;"><img src="./img/right.png"class="img img-fluid" style="width: 2%;margin-right: 10px;">Enterprise</span>  <span style="padding-left: 20px;"><img src="./img/right.png"class="img img-fluid" style="width: 2%;margin-right: 10px;">Community</span>  <span style="padding-left: 20px;"><img src="./img/right.png"class="img img-fluid" style="width: 2%;margin-right: 10px;">Odoo.sh</span>
+                  </div>
+                </div> 
+              </div>
+              <h4 class="text-center" style="margin-top: 80px; margin-bottom: 10px;">
+                <b>
+                <span style="color: #0074ff;">EDI</span> Odoo Integration (FTP/SFTP Import/Export Records)
+              </b>
+              </h4>
+              <p class="suggest_P text-center" style="padding-top: 40px; font-size: 18px; ">EDI Odoo Integration connects with FTP/SFTP servers to retrieve folder structures and generate file attachments, enabling seamless file management within Odoo. It supports importing and exporting various data types, including handling files with either a single record or multiple records per file. Currently, the integration supports the XML file format. Additionally, it includes out-of-the-box features such as automatic file splitting for large files—breaking them into smaller record sets for efficient processing—and dynamic mapping, where the system determines the appropriate mapping table based on the XML file's header.
+              </p>
+              <div style="text-align: center;margin-top: 60px; margin-bottom:80px ;">
+                    <a href="https://www.youtube.com/playlist?list=PLarcwR0xYlXlWgwYmwaY91XDvm_CwUN_0" class="fullbtn shadow" target="_blank" style="color: #FFFFFF !important; border-radius: 0; background-color: #ed3422; border-color: #005ca7; padding: 15px; font-weight: bold; width: 20%; text-decoration: none; border-radius: 12px;">
+                        <img src="./img/hd-white-youtube-yt-logo-symbol-icon-png-704081694687174hznqiiqmti-removebg-preview.png" class="img img-fluid" style="width: 3%; margin-right: 10px;" >
+                        Watch on YouTube
+                    </a>
+              </div> 
+          </section>
+          <section class="features" style=" margin: 80px 80px 0px;" >
+              <div class="feature_heading text-center" style="margin-bottom: 60px;">
+                <h3 style="padding-bottom: 0px;"><span style="color: #4082F0;">EDI</span> Key Features </h3>
+              </div>
+              <div class="features_part">
+                <div class="row" style="padding: 0px 10px;">
+                  <div class="col-md-4 col-sm-6 mt48 mb-4 feature_col">
+                      <div class="bg-white shadow" style="border-radius:10px; padding:25px">
+                          <p class="text-center mb4" style="margin-top:-70px">
+                              <span style="" class=""><img src="./img/App description (4).png" style="height:60px"></span>
+                          </p>
+                          <div class="text-center">
+                            <h5 class="feature_prg">
+                              Connect With Multiple FTP/SFTP Servers </h5>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 mt48 mb-4 feature_col">
+                      <div class="bg-white shadow" style="border-radius:10px; padding:25px; height:100%">
+                          <p class="text-center mb4" style="margin-top:-70px">
+                              <span style="" class=""><img src="./img/App description (5).png" style="height:60px"></span>
+                          </p>
+                          <div class="text-center">
+                            <h5 class="feature_prg" style="margin-bottom: 0px;">
+                              Supported Any XML File                   </h5>
+                              <h5 class="feature_prg">Format</h5>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 mt48 mb-4 feature_col">
+                      <div class="bg-white shadow" style="border-radius:10px; padding:25px; height:100%">
+                          <p class="text-center mb4" style="margin-top:-70px">
+                              <span style="" class=""><img src="./img/App description (3).png" style="height:60px"></span>
+                          </p>
+                          <div class="text-center">
+                            <h5 class="feature_prg">
+                              Auto Import/Export Any Transaction                  </h5>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 mt48 mb-4 feature_col">
+                      <div class="bg-white shadow" style="border-radius:10px; padding:25px; height:100%">
+                          <p class="text-center mb4" style="margin-top:-70px">
+                              <span style="" class=""><img src="./img/App description (6).png" style="height:60px"></span>
+                          </p>
+                          <div class="text-center">
+                            <h5 class="feature_prg">
+                              Auto Import Inventory From FTP/SFTP</h5>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 mt48 mb-4 feature_col">
+                      <div class="bg-white shadow" style="border-radius:10px; padding:25px; height:100%">
+                          <p class="text-center mb4" style="margin-top:-70px">
+                              <span style="" class=""><img src="./img/App description (7).png" style="height:60px"></span>
+                          </p>
+                          <div class="text-center">
+                            <h5 class="feature_prg">
+                              Manage Detailed Log For Each Process                 </h5>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 mt48 mb-4 feature_col">
+                      <div class="bg-white shadow" style="border-radius:10px; padding:25px; height:100%">
+                          <p class="text-center mb4" style="margin-top:-70px">
+                              <span style="" class=""><img src="./img/6.png" style="height:60px"></span>
+                          </p>
+                          <div class="text-center">
+                            <h5 class="feature_prg" style="margin-bottom: 0px;">
+                              Interactive User                 </h5>
+                              <h5 class="feature_prg">Interface</h5>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
+          </section>
+          <section class="demo_request" style="margin: 60px 80px 60px; ">
+              <div class="demo_fullcontent text-center shadow" style="background-color: #e5f7fb; padding: 50px 0px; border-radius: 20px;">
+                <div class="row">
+                  <div class="col-lg-6 col-md-6" style="margin-top: 10px;">
+                    <h4 style="color: #0074ff;font-size: 27px;font-style: italic;">GET INSTANT PERSONALIZED DEMO</h4>
+                  </div>
+                  <div class="col-lg-6 col-md-6 demo_margin" style=" padding-right: 0; padding-left: 100px;">
+                    <span><a href="mailto:support@vrajatechnologies.com" target="_blank" style="background-color:#7CA8F2; border-radius:10px; font-family:Montserrat; display:inline-block; padding:7px 33px; border:1px solid #7CA8F2; text-decoration: none; margin-left: 50px;" class="mx-1  deep-1 deep_hover shadow">
+                      <img class="img" style="width:30px" src="./img/Untitled design.png">
+                      <span class="ps-2" style="color:#000000; font-size:20px; vertical-align:middle"><b>Email Us</b></span>
+                    </a></span>
+                    <span><a href="skype:live:vrajatechnologies?chat" target="_blank" style="background-color:#7CA8F2; border-radius:10px; font-family:Montserrat; display:inline-block; padding:7px 33px; border:1px solid #7CA8F2; text-decoration: none;" class="mx-1  deep-1 deep_hover shadow">
+                      <img class="img" style="width:30px" src="./img/skype.png">
+                      <span class="ps-2" style="color:#000000; font-size:20px; vertical-align:middle"><b>Skype</b></span>
+                    </a></span>
+                  </div>
+                </div>
+              </div>
+          </section>
+          <section style="padding-top: 10px; padding-bottom: 60px;">
+              <section class="oe_container mt32">
+                <div class="feature_heading text-center" style="margin-bottom: 40px;">
+                  <h3>Recommended  <span style="color: #4082F0;"> Solutions </span></h3>
+                </div>
+                  <div id="demo" class="row carousel slide " data-bs-ride="carousel">
+                      <!-- The slideshow -->
+                      <div class="carousel-inner">
+                        <div class="carousel-item active" style="min-height: auto !important;">
+                          <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                              <a href="https://apps.odoo.com/apps/modules/18.0/vraja_shopify_odoo_integration" target="_blank" style="text-decoration: none;color: black; text-align: center;">
+                                  <div style="" class="">
+                                      <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/shopify.gif">
+                                      <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                        Shopify Odoo Integration </h5>
+                                  </div>
+                              </a>
+                          </div>
+                          <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                              <a href="https://apps.odoo.com/apps/modules/18.0/stripe_payment_odoo_integration" target="_blank" style="text-decoration: none;color: black; text-align: center;">
+                                  <div style="" class="">
+                                      <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/stripe.gif">
+                                      <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                        Stripe Terminal Integration </h5>
+                                  </div>
+                              </a>
+                          </div>
+                          
+                          <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                              <a href="https://apps.odoo.com/apps/modules/18.0/shipstation_shipping_odoo_integration" target="_blank" style="text-decoration: none;color: black; text-align: center;">
+                                  <div style="" class="">
+                                      <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/Cargus Shipping Integration.gif">
+                                      <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                        Shipstation Shipping Connector </h5>
+                                  </div>
+                              </a>
+                          </div>
+                          <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                              <a href="https://apps.odoo.com/apps/modules/18.0/bigcommerce_odoo_integration" target="_blank" style="text-decoration: none;color: black; text-align: center;">
+                                  <div style="" class="">
+                                      <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/bigcommerce.gif">
+                                      <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                        BigCommerce Odoo Integration</h5>
+                                  </div>
+                              </a>
+                          </div>
+                          
+                      </div>
+                          <div class="carousel-item " style="min-height: auto !important;">
+                              <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                                  <a href="https://apps.odoo.com/apps/modules/18.0/fetch_all_shipping_carrier_rates" target="_blank" style="text-decoration: none;color: black; text-align: center;">
+                                      <div style="" class="">
+                                          <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/fetch all shipping.png">
+                                          <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                            Fetch All Shipping Carrier Rates </h5>
+                                      </div>
+                                  </a>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                                  <a href="https://apps.odoo.com/apps/modules/18.0/dynamic_field_mapping" target="_blank" style="text-decoration: none;color: black; text-align: center;">
+                                      <div style="" class="">
+                                          <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/DYNAMIC FIELD MAPPING.png">
+                                          <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                          Dynamic Field Mapping </h5>
+                                      </div>
+                                  </a>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                                  <a href="https://apps.odoo.com/apps/modules/18.0/custom_shipping_rate" target="_blank" style="text-decoration: none;color: black; text-align: center;">
+                                      <div style="" class="">
+                                          <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/custome shipping rate.png">
+                                          <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                            Custom Shipping rate </h5>
+                                      </div>
+                                  </a>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                                <a href="https://apps.odoo.com/apps/modules/18.0/dynamic_import_records" target="_blank"  style="text-decoration: none;color: black; text-align: center;">
+                                    <div style="" class="">
+                                        <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/all in one import.png">
+                                        <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                        All In One Import </h5>
+                                    </div>
+                                </a>
+                            </div>
+                          </div>
+                          <div class="carousel-item " style="min-height: auto !important;">
+                              
+                              <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                                  <a href="https://apps.odoo.com/apps/modules/18.0/csv_dynamic_global_export" target="_blank" style="text-decoration: none;color: black; text-align: center;">
+                                      <div style="" class="">
+                                          <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/all in one export.png">
+                                          <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                          All in one export in CSV/XLS  </h5>
+                                      </div>
+                                  </a>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                                  <a href="https://apps.odoo.com/apps/modules/18.0/all_in_one_shipping_report" target="_blank" style="text-decoration: none;color: black; text-align: center;">
+                                      <div style="" class="">
+                                          <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/generate.png">
+                                          <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                            Shipping(Manifest) Reports </h5>
+                                      </div>
+                                  </a>
+                              </div>
+                              <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                                <a href="https://apps.odoo.com/apps/modules/18.0/all_in_one_bulk_cancel_operations" target="_blank" style="text-decoration: none;color: black; text-align: center;">
+                                    <div style="" class="">
+                                        <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/All In One Cancel.png">
+                                        <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                        All In One Cancel  </h5>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-3 mb16 mt16" style="float:left">
+                                <a href="https://apps.odoo.com/apps/modules/17.0/rma_customer_supplier_management" target="_blank" style="text-decoration: none;color: black; text-align: center;">
+                                    <div style="" class="">
+                                        <img class="img img-responsive center-block shadow" style="border-radius: 10px; width:96%;" src="./img/Custom Shipping Cost Calculation (2).png">
+                                        <h5 class="mt0 text-truncate" style="padding:6% 4%; text-align:center; width:100%; ">
+                                        RMA Customer Supplier Management </h5>
+                                    </div>
+                                </a>
+                            </div>
+                          </div>
+                        
+                      </div>
+                      <!-- Left and right controls -->
+                      <a class="carousel-control-prev" href="#demo" data-bs-slide="prev" style="margin-left:-30px; width:35px; color:#000">
+                        <span class="carousel-control-prev-icon">
+                          <i class="fa fa-chevron-left" style="font-size:24px"></i>
+                        </span>
+                      </a>
+                      <a class="carousel-control-next" href="#demo" data-bs-slide="next" style="margin-right:-30px; width:35px; color:#000">
+                          <span class="carousel-control-next-icon">
+                          <i class="fa fa-chevron-right" style="font-size:24px"></i>
+                        </span>
+                      </a>
+                  </div>
+              </section>
+          </section>
+          <section class="oe_container mt32 mb32 shadow" style="background-color: #EEF0F5 !important;border-radius: 20px;">
+                <div id="loempia_tabs" class="row" style="max-width:1540px; margin:0 auto; padding-bottom:50px; border-radius:15px; padding-top:40px; padding-left: 10px; padding-right: 10px; background-color: #EEF0F5 !important;">
+                  <div class="container-fluid" style=" border-radius:10px">
+                    <div class="tab-content container pt-3 tabs_views" id="tabs_content">
+
+                      <ul role="tablist" class="nav nav-tabs justify-content-center" data-tabs="tabs" style="border:none;background-color: inherit !important;">
+                        <li style="background-color:#7CA8F2; margin-right:20px; padding-bottom:2px; padding:0px !important; border-radius: 10px;" class="nav-item">
+                          <a href="#vts_import" data-bs-toggle="tab" aria-expanded="true" class="nav-link active" style=" text-transform:uppercase; font-weight:600; font-size:15px; letter-spacing:1px; padding:14px 20px; color:#282828">
+                            <img src="./img/import.png" style="width:30px; margin-top:-4px; margin-right:6px">Import 
+                            </a>
+                        </li>
+                      
+                        <li style="background-color:#7CA8F2; margin-right:20px; padding-bottom:2px; padding:0px !important; border-radius: 10px;" class="nav-item">
+                          <a href="#vts_export" data-bs-toggle="tab" aria-expanded="true" class="nav-link " style=" text-transform:uppercase; font-weight:600; font-size:15px; letter-spacing:1px; padding:14px 20px; color:#282828">
+                            <img src="./img/export.png" style="width:30px; margin-top:-4px; margin-right:6px">Export
+                            </a>
+
+                        </li>
+                        <li style="background-color:#7CA8F2; margin-right:20px; padding-bottom:2px; padding:0px !important; border-radius: 10px;" class="nav-item">
+                          <a href="#vts_record" data-bs-toggle="tab" aria-expanded="true" class="nav-link " style=" text-transform:uppercase; font-weight:600; font-size:15px; letter-spacing:1px; padding:14px 20px; color:#282828">
+                            <img src="./img/import_inventory.png" style="width:30px; margin-top:-4px; margin-right:6px">Import Multi Records 
+                            </a>
+                        </li>
+                        <li style="background-color:#7CA8F2; margin-right:20px; padding-bottom:2px; padding:0px !important; border-radius: 10px;" class="nav-item">
+                          <a href="#vts_product" data-bs-toggle="tab" aria-expanded="true" class="nav-link " style=" text-transform:uppercase; font-weight:600; font-size:15px; letter-spacing:1px; padding:14px 20px; color:#282828">
+                            <img src="./img/App description (10).png" style="width:30px; margin-top:-4px; margin-right:6px">Export Multi Records
+                            </a>
+                        </li>
+                        <li style="background-color:#7CA8F2; margin-right:20px; padding-bottom:2px; padding:0px !important; border-radius: 10px;" class="nav-item">
+                          <a href="#faqs" data-bs-toggle="tab" aria-expanded="true" class="nav-link" style=" text-transform:uppercase; font-weight:600; font-size:15px; letter-spacing:1px; padding:11px 20px; color:#282828">
+                            <img src="./img/faq.png" style="width:30px; margin-top:-4px; margin-right:6px">FAQs
+                            </a>
+                        </li>
+                        <li style="background-color:#7CA8F2; margin-right:20px; padding-bottom:2px; padding:0px !important; border-radius: 10px;" class="nav-item">
+                          <a href="#user_guide" data-bs-toggle="tab" aria-expanded="true" class="nav-link" style="text-transform: uppercase;font-weight: 600;font-size: 15px;letter-spacing: 1px;padding: 15px 20px;color:#282828;">
+                            <img src="./img/support.png" style="width:30px; margin-top:-4px; margin-right:6px">Support
+                            </a>
+                        </li>  
+                      </ul>
+                        <!-- Features Tabs -->
+                        <div class="container-fluid tabs_views" style="padding-top: 40px; padding-left: 40px; padding-right: 40px;">
+                            <div class="tab-content container pt-3 tabs_views" id="tabs_content">
+                                <!-- Features Tabs -->
+                                <div class="tab-pane show active" id="vts_import">
+                                  <div class="container">
+
+                                      <h4 style="padding: 20px 0px;">Integration Steps</h4>
+                                      <h5 style="padding-bottom: 20px;">1. Installation</h5>
+                                      <p style="padding-bottom: 5px;">After downloading the Odoo EDI Integration App from the Odoo store, place it in the Odoo Addons path or any desired location. Restart your Odoo instance and go to the Apps section in the dashboard. Click on "Update Apps List" from the menu. Once the list is updated successfully, the Odoo EDI Integration app will appear in the Apps section.</p>
+                                      <p style="padding-bottom: 5px;">Click the "Install" button, and you're all set! You can now use the Odoo EDI Integration app in your Odoo instance.</p>
+                                      <img src="./img1.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+
+                                      <h5 style="padding-bottom: 20px; padding-top: 20px;">2. FTP/SFTP Configuration (From menu Sync FTP/SFTP Syncing)</h5>
+                                      <p style="padding-bottom: 5px;">You need to set up FTP syncing connection by entering the URL, port, username, and password.</p>
+                                      <p style="padding-bottom: 5px;">After entering the proper details, the right-side ribbon indicates whether your FTP connection is properly configured or not.</p>
+                                      <img src="./img2.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                      <p style="padding-bottom: 5px; padding-top: 20px;">You need to set up SFTP syncing connection by entering the Host, username, password, host. Additionally you need to enter root directory path, so we will import inner all directories.</p>
+                                      <p style="padding-bottom: 5px;">After entering the proper details, the right-side ribbon indicates whether your SFTP connection is properly configured or not.</p>
+                                      <img src="./img2_1.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+
+                                      <h5 style="padding-bottom: 20px; padding-top: 20px;">3. Fetch Directories from FTP/SFTP</h5>
+                                      <p style="padding-bottom: 5px;">After successfully syncing with FTP/SFTP, you will see the 'Sync FTP/SFTP Directories' button. Clicking this button will fetch the directories from FTP/SFTP and create corresponding records in Odoo.</p>
+                                      <img src="./img3.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+
+                                      <h5 style="padding-bottom: 20px; padding-top: 20px;">4. EDI Table integration (From EDI menu) </h5>
+                                      <p style="padding-bottom: 10px;">You need to mention the required details for the incoming/outgoing table.</p>
+                                      <ul>
+                                        <li><p><b>Odoo Model:</b> Which Odoo model would you like to perform the operation on?</p></li>
+                                        <li><p><b>File Type</b> If your XML file having single record then select single. - If your XML file having multiple records then select multiple.</p></li>
+                                        <li><p><b>XML Header:</b>  You need to specify the main header name in the XML.</p></li>
+                                        <li> <p><b> Search record from this value:</b> To check an existing record, Set the XML element name(s) here. Use the provided value(s) to check if existing records are available. You can specify multiple XML elements, separated by commas.</p></li>
+                                        <li><p><b> Default value:</b> During the import/export process, if you want to include specific values along with the processed data, you should enter these values in dictionary format.</p></li>
+                                        <li> <p><b>Type: </b>Incoming/Outgoing, this table will be used for which kind of operation.</p></li>
+                                        <li> <p><b>Server Type: </b>From which server your file is synced.</p></li>
+                                        <li><p><b> Trading Partner: </b>When the type is outgoing, you need to select the trading partner/contact from which records of the particular model will be fetched and then exported to FTP/SFTP.</p></li>
+                                        <li><p><b> Export file to FTP/SFTP Directory:</b> When the type is outgoing, you need to select the FTP/SFTP directory where you want to export files.</p></li>
+                                        <li> <p><b> Main table:</b> You need to enable this option if your configuration is main. For example, to add a sale order record, create a configuration record with the main table option enabled for the sale order model. Additionally, create a separate configuration for the sale order line without enabling the main table option.</p></li>
+                                      </ul>
+                                      <h5 style="padding-bottom: 20px; padding-top: 20px;">In Mapping XML Elements with Fields table</h5>
+                                      <ul>
+                                        <li>
+                                          <p><b>XML Element: </b>You need to enter the exact XML element you want to map with the Odoo field.</p>
+                                        </li>
+                                        <li><p><b>Selected Model fields: </b>You need to select the field with which you want to map the XML data.</p></li>
+                                        <li><p><b> Field to search for M2O: </b>This field is optional. If you choose a Many2one field for mapping, you have the option to set the inner field of that Many2one model. This helps you search records based on that field; otherwise, the search will use the name field of the Many2one model.</p></li>
+                                        <li><p><b>Sub Table:</b>For a One2Many field, you need to select a subtable where a separate configuration is available for the One2Many fields. (In the subtable, follow the same concept, but you do not need to enable the Main table option. If the "Search record from this value" field is left empty, it will create duplicate One2Many records from the CSV. If you select this option, it will update existing records.)</p></li>
+                                        <li><p><b> Required: </b>When the type is outgoing, this field becomes visible. If it's enabled, the element is required and will cause an error if the value is missing.</p></li>
+                                        <li><p><b>    Character length max: </b>When the type is outgoing, this field becomes visible. This option allows you to limit the number of characters for a field.</p></li>
+                                      </ul>
+                                      <h5 style="padding-bottom: 20px; padding-top: 20px;">Main Table</h5>
+                                      <img src="./img4.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                      <h5 style="padding-bottom: 20px; padding-top: 20px;">Sub Table</h5>
+                                      <img src="./img5.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+
+                                      <h5 style="padding-bottom: 20px; padding-top: 20px;">5. Import Records Process (From FTP/SFTP to Odoo)</h5>
+                                      <p style="padding-bottom: 5px;">Fetch Inner files/attachments from directories through button "Sync Inner Files"</p>
+                                      <p style="padding-bottom: 5px;">We have also provided a scheduled action option for automation. A scheduled action will be created for each FTP/SFTP configuration, and you can review it using the smart button within the form view. You can configure the execution time according to your requirements.</p>
+                                      <b>Before pressing the button or executing the scheduled action, certain configurations must be completed. The details are provided below.</b>
+                                      <p style="padding-bottom: 5px;padding-top: 10px;">First, in the directory list view, specify which directory will be used for the Download operation, so from those directory we will fetch inner files.</p>
+                                      <p style="padding-bottom: 5px;">In the directory configuration, there's an option stating, "Daily new file coming in this directory". If a directory receives new files with the same name every day, and you need to fetch and process them in Odoo daily, you should enable this checkbox.</p>
+                                      <img src="./img6.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                      <p style="padding-bottom: 5px;">Second, in the directory itself you need to select Mapping Model/Table if you don't want to search using XML header.</p>
+                                      <p style="padding-bottom: 5px;">We’ve added a feature that allows automatic mapping table search using an XML file’s header. Enable the "Search mapping table using XML header" option in the directory form view to support multiple file formats in one directory. Ensure the mapping table is configured for different XML headers.</p>
+                                      <img src="./img7.png" class="shadow img img-fluid edi_image" >
+                                      
+                                      <p style="padding-bottom: 5px; padding-top: 20px;">After making these selections of download option & mapping Model/table you need to press 'Sync Inner Files' button, that process fetch inner files/attachments from the directories chosen for downloading will be fetched into Odoo, creating Odoo attachments.</p>
+                                      <p style="padding-bottom: 5px; padding-top: 5px;">Along with FTP/SFTP attachments, EDI transaction records will also be created. (Those records will be processed when the scheduled action executes.) </p>
+                                      <img src="./img8.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+                                      <p style="padding-bottom: 10px;">Additionally, we have implemented a directory-wise auto-sync feature. If you have numerous files across different directories that are marked for download, there is a possibility where the common scheduled action of sync inner files encounters timeouts due to Odoo's processing limits, resulting in incomplete synchronization. <br/><br/>To address this issue, we have provided an option to enable auto-sync on a per-directory basis. Simply click the "Generate Auto Sync" button in the desired directory, and the sync process will run individually for the files within that directory, ensuring complete synchronization. You can review it using the smart button within the form view.</p>
+                                      <img src="./img28.png" class="shadow img img-fluid edi_image" style="margin: 10px 0px;">
+
+
+                                      <h5 style="padding-bottom: 20px; padding-top: 20px;">6. To process EDI Transactions through Scheduled Action (Cron)</h5>
+                                      <p style="padding: 0px 0px 5px;">From the scheduled action, all EDI transactions in the draft state are processed based on the type. </p>
+                                      <ul>
+                                        <li><p style="padding-bottom: 5px;"><b>Incoming type:</b> Records will be created in Odoo.</p></li>
+                                      </ul> 
+                                      <p style="padding-bottom: 5px;">On successful EDI transaction processed that record will move to the done state, if any issue arises then it will move into the failed state & log will generated to check issue.</p>
+                                      <h5 style="padding: 5px 0px 5px;">Scheduled Action </h5>
+                                    <img src="./img11.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                    <h5 style="padding: 10px 0px 5px;">Incoming record created of Sale Order </h5>
+                                    <img src="./img12.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                    <h5 style="padding: 10px 0px 5px;">Incoming record created of Purchase Order </h5>
+                                    <img src="./img13.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+
+                                    <h5 style="padding-bottom: 20px; padding-top: 20px;">7. Log management</h5>
+                                      <p style="padding: 0px 0px 5px;">A log is created for reference in case of any faults during the import/export process.  </p>
+                                    <h5 style="padding: 0px 0px 5px;">We also set a scheduled action to delete log records older than 13 days. </h5>
+                                    <img src="./img15.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                    <img src="./img16.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+
+                                    <h5 style="padding-bottom: 20px; padding-top: 5px;">8. Sample XML files</h5>
+                                    <h5 style="padding: 0px 0px 5px;">Sample Sale order file which gets imported from FTP.</h5>
+                                    <img src="./img17.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                  </div>
+                                </div>
+
+                                <div class="tab-pane " id="vts_export">
+                                  <section class="oe_container mt48" style="background-color: transparent !important;">
+                                    <h5 style="padding-bottom: 20px;">1. Export Records Process (From Odoo to FTP/SFTP)</h5>
+                                  <p style="padding-bottom: 5px;"><b>Firstly you need to do some configuration.</b></p>
+                                  <h5 style="padding: 10px 0px 10px;">Inside FTP/SFTP Syncing form view you need to enable Upload option beside those directory in which you want to export files from Odoo to FTP/SFTP.</h5>
+                                  <img src="./img24.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                  <h5 style="padding: 10px 0px 10px;">In Configuration table of type outgoing, you need to select partner whom records you need to export & along with that you need to select FTP/SFTP directory in which you want to export those files/records.</h5>
+                                  <img src="./img25.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                  <h5 style="padding: 10px 0px 10px;">A scheduled action has been created to fetch export records based on the EDI Table configuration of the Trading Partner and Odoo Model, which will then create EDI transaction records in ‘Draft’ state. (Those records will be processed when the scheduled action executes.)</h5>
+                                  <img src="./img9.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                  <img src="./img10.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                  <h5 style="padding: 10px 0px 10px;">If something goes wrong or required field values are missing, those EDI transaction records will be set to a failed state, and a log will be generated for them. After rectifying the issue, you can recompute the XML content by clicking the 'Re-compute' button. Upon successful recomputation, the XML content will be available, and the state will change to draft.</h5>
+                                  <img src="./img19.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                  <img src="./img20.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">  
+
+                                  <h5 style="padding-bottom: 10px; padding-top: 20px;">2. To process EDI Transactions through Scheduled Action (Cron)</h5>
+                                  <p style="padding-bottom: 10px;"><b>From the scheduled action, all EDI transactions in the draft state are processed based on the type.</b></p>
+                                  <ul>
+                                    <li><p style="padding-bottom: 5px;"><b>Outgoing type:</b> Records will be exported/uploaded to FTP/SFTP from Odoo. Based on the configuration table, the XML file will be uploaded to the directory specified in the configuration.</p></li>
+                                  </ul>
+                                  <p style="padding-bottom: 10px;">On successful EDI transaction processed that record will move to the done state, if any issue arises then it will move into the failed state & log will generated to check issue.</p>
+
+                                  <h5 style="padding-bottom: 10px;">Scheduled Action </h5>
+                                  <img src="./img11.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                  <p style="padding-bottom: 10px; padding-top: 30px;"><b>Outgoing record:</b> XML file is generated and exported to the configured FTP/SFTP directory.</p>
+                                  <img src="./img14.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+                                  <h5 style="padding-bottom: 10px; padding-top: 20px;">3. Log management</h5>
+                                  <p style="padding-bottom: 10px;"><b>A log is created for reference in case of any faults during the export process.</b></p>
+                                  <p style="padding-bottom: 10px;">We also set a scheduled action to delete log records older than 13 days.</p>  
+                                  <img src="./img15.png" class="shadow img img-fluid" style="margin: 20px 0px;">   
+                                  <img src="./img16.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;"> 
+                                  </section>
+                                </div>
+
+                                <div class="tab-pane " id="vts_record">
+                                  <section class="oe_container mt48" style="background-color: transparent !important;">
+                                    <h5 style="padding-bottom: 20px;">1. We are managing a distinct configuration setup for the import multiple records in a single file.</h5>
+                                   
+                                    <ul>
+                                      <li><p> <b>Odoo Model:</b>Which Odoo model would you like to perform the operation on?</p></li>
+                                      <li><p><b>File Type:</b>- If your XML file having single record then select single. - If your XML file having multiple records then select multiple. (In this case it's regarding multiple records in single file.)</p></li>
+                                      <li><p><b>Inventory Location: </b>When you select Quants as the Odoo model, this field becomes visible. Here, you need to choose the location where you want to add or update stock. (It's mandatory.)</p></li>
+                                      <li><p><b>XML Header: </b> You need to specify the main header name in the XML.</p></li>
+                                      <li><p><b> Search record from this value:</b> To check an existing record, Set the XML element name(s) here. Use the provided value(s) to check if existing records are available. You can specify multiple XML elements, separated by commas.</p></li>
+                                      <li><p><b> Default value:</b>During the import process, if you want to include specific values along with the processed data, you should enter these values in dictionary format.
+                                        Type: Incoming.</p></li>
+                                      <li><p><b>Server Type: </b>From which server your file is synced.</p></li>
+                                      <li><p><b>Main table:</b> For importing multiple records in a file, we use a main table and sub-table concept. In the main table, you need to enable this option. (You need to create sub-table first for those model mapping configuration.)</p></li>
+                                      
+                                      
+                                    </ul>
+                                    <h5 style="padding-bottom: 10px; padding-top: 10px;">In Mapping XML Elements with Fields table</h5>
+                                    <ul>
+                                      <li><p><b>XML Element: </b>Enter the exact XML element to map with the Odoo field. Use '/' to separate elements for nested levels.</p></li>
+                                      <li><p><b>Sub EDI Import Table:  </b>For importing multiple records in a file, create a table without enabling the main table option, inside that table map Odoo fields to XML elements, and select that table here.</p></li>
+                                    </ul>
+
+                                    <h5 style="padding-bottom: 5px; padding-top: 15px;">Main Table of Import multiple records in a file </h5>
+                                    <img src="./img21.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                    <h5 style="padding-bottom: 5px; padding-top: 15 px;">Sub Table</h5>
+                                    <img src="./img22_1.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                    <h5 style="padding-bottom: 5px; padding-top: 15px;">Sub Table of Import Quants</h5>
+                                    <img src="./img22.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                    <h5 style="padding-bottom: 5px; padding-top: 15px;">Sample Product file which gets imported from SFTP & having multiple products data in single file. </h5>
+                                    <img src="./img18.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                    <h5 style="padding-bottom: 5px; padding-top: 15px;">Sample file of Import Quants</h5>
+                                    <img src="./img23.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+                                    <h5 style="padding-bottom: 20px; padding-top: 20px;">2. Import Records Process (From FTP/SFTP to Odoo)</h5>
+                                    <p style="padding-bottom: 10px;">Fetch Inner files/attachments from directories through button "Sync Inner Files"</p>
+                                    <p style="padding-bottom: 5px;">We have also provided a scheduled action option for automation. A scheduled action will be created for each FTP/SFTP configuration, and you can review it using the smart button within the form view. You can configure the execution time according to your requirements.</p>
+                                    <b style="padding-bottom: 15px;">Before pressing the button or executing the scheduled action, certain configurations must be completed. The details are provided below.</b>
+                                    <p style="padding-bottom: 5px;">First, in the directory list view, specify which directory will be used for the Download operation, so from those directory we will fetch inner files.</p>
+                                    <p style="padding-bottom: 5px;">In the directory configuration, there's an option stating, "Daily new file coming in this directory". If a directory receives new files with the same name every day, and you need to fetch and process them in Odoo daily, you should enable this checkbox.</p>
+                                    <img src="./img6.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+                                    <p style="padding-bottom: 5px;">Second, in the directory itself you need to select Mapping Model/Table if you don't want to search using XML header.</p>
+                                    <p style="padding-bottom: 5px;">We’ve added a feature that allows automatic mapping table search using an XML file’s header. Enable the "Search mapping table using XML header" option in the directory form view to support multiple file formats in one directory. Ensure the mapping table is configured for different XML headers.</p>
+                                    <p style="padding-bottom: 5px;">We have also introduced a feature that enables record splitting. If a file is too large or contains an excessive number of records, it will be automatically split to ensure seamless processing. This functionality applies to all files within this directory, allowing efficient handling and processing.</br>You need to enable the "Split the records of a file" option. Once enabled, a new field will appear below it, where you must specify the XML tag used to split the file. This tag should correspond to multiple records.</p>
+                                    <img src="./img7_1.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+                                    <p style="padding-bottom: 10px;">After making these selections you need to press 'Sync Inner Files' button, that process fetch inner files/attachments from the directories chosen for downloading will be fetched into Odoo, creating Odoo attachments.</p>
+                                    <p style="padding-bottom: 5px;">Along with attachments, EDI transaction records will also be created. (Those records will be processed when the scheduled action executes.)</p>
+                                    <img src="./img8.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+                                    <p style="padding-bottom: 10px;">Additionally, we have implemented a directory-wise auto-sync feature. If you have numerous files across different directories that are marked for download, there is a possibility where the common scheduled action of sync inner files encounters timeouts due to Odoo's processing limits, resulting in incomplete synchronization. <br/><br/>To address this issue, we have provided an option to enable auto-sync on a per-directory basis. Simply click the "Generate Auto Sync" button in the desired directory, and the sync process will run individually for the files within that directory, ensuring complete synchronization. You can review it using the smart button within the form view.</p>
+                                    <img src="./img28.png" class="shadow img img-fluid edi_image" style="margin: 10px 0px;">
+
+                                    <h5 style="padding-bottom: 10px; padding-top: 20px;">3. To process EDI Transactions through Scheduled Action (Cron)</h5>
+                                    <p style="padding-bottom: 10px;">From the scheduled action, all EDI transactions in the draft state are processed based on the type.</p>
+                                    <ul><li><b>Incoming type:</b>Records will be created in Odoo.</li></ul>
+                                    <p style="padding-bottom: 10px;">On successful EDI transaction processed that record will move to the done state, if any issue arises then it will move into the failed state & log will generated to check issue.</p>
+
+                                    <h5 style="padding-bottom: 10px; padding-top: 10px;">Scheduled Action</h5>
+                                    <img src="./img11.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                  </section>
+                                </div>
+
+                                <div class="tab-pane " id="vts_product">
+                                  <section class="oe_container mt48" style="background-color: transparent !important;">
+                                    <h5 style="padding-bottom: 20px;">1. We are managing a distinct configuration setup for the export multiple records in a single file.</h5>
+                                   
+                                    <ul>
+                                      <li><p> <b>Odoo Model:</b> Which Odoo model would you like to perform the operation on?</p></li>
+                                      <li><p><b>File Type:</b> - If you want to export single record in single file then select single. - If you want to export multiple records in a single file then select multiple. (In this case it's regarding multiple records in single file. So you need to select this option.)</p></li>
+                                      <li>  <p><b>XML Header:</b> You need to specify the main header name in the XML.</p></li>
+                                      <li><p><b> Export Multiple Record's XML Element Name:</b> When you export multiple records in one file at that time you need to provide XML element for those multiple records. Those muliple records belongs to which XML element.</p></li>
+                                      <li><p><b>Search record from this value: </b>  To check an existing record, Set the XML element name(s) here. Use the provided value(s) to check if existing records are available. You can specify multiple XML elements, separated by commas.</p></li>
+
+                                      <li><p><b>  Default value: </b>  During the import process, if you want to include specific values along with the processed data, you should enter these values in dictionary format.</p></li>
+                                      <li><p><b>Type: </b>Incoming.</p></li>
+
+                                      <li><p><b>Server Type: </b>From which server your file is synced..</p></li>
+                                      <li><p><b> Export file to FTP/SFTP Directory:</b> When the type is outgoing, you need to select the FTP/SFTP directory where you want to export files.</p></li>
+                                      <li><p><b>Main table: </b>For importing multiple records in a file, we use a main table and sub-table concept. In the main table, you need to enable this option. (You need to create sub-table first for those model mapping configuration.)</p></li>
+                                    </ul>
+                                    <p style="padding: 10px 0px;"><b>In Mapping XML Elements with Fields table</b></p>
+                                    <ul>
+                                      <li> <p><b>XML Element:</b> You need to enter the exact XML element you want to map with the Odoo field.</p></li>
+                                      <li> <p><b>  Selected Model fields:</b> You need to select the field with which you want to map the XML data.</p></li>
+                                      <li><p><b>Field to search for M2O:</b>This field is optional. If you choose a Many2one field for mapping, you have the option to set the inner field of that Many2one model. This helps you search records based on that field; otherwise, the search will use the name field of the Many2one model.</p></li>
+                                      <li><p><b>Sub Table: </b>For a One2Many field, you need to select a subtable where a separate configuration is available for the One2Many fields. (In the subtable, follow the same concept, but you do not need to enable the Main table option. If the "Search record from this value" field is left empty, it will create duplicate One2Many records from the CSV. If you select this option, it will update existing records.)</p></li>
+                                      <li><p><b> Required: </b>When the type is outgoing, this field becomes visible. If it's enabled, the element is required and will cause an error if the value is missing.</p></li>
+                                      <li><p><b>Character length max:</b>When the type is outgoing, this field becomes visible. This option allows you to limit the number of characters for a field.</p></li>
+                                    </ul>
+                                    <h5 style="padding: 10px 0px 10px;">The main export table supports exporting multiple records into a file, specifically for records that include the *partner_id* field—such as Sales Orders, Purchase Orders, Account Moves, etc.</h5>
+                                    <img src="./img26_1.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+                                    <h5 style="padding: 10px 0px 10px;">For product variant export specifically, there's no need to include a partner in the mapping table; all other configurations remain the same.</h5>
+                                    <img src="./img26.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+                                    <h5 style="padding-bottom: 20px; margin-top: 30px;">2. Export Multiple Records Process</h5>
+                                    <p style="padding-bottom: 10px;"><b>This is work for those models who have partner_id field.</b></p>
+                                    <p style="padding-bottom: 10px;">A scheduled action has been created to fetch export records based on the EDI Table configuration of the Trading Partner and Odoo Model, which will then create EDI transaction records in ‘Draft’ state. (Those records will be processed when the scheduled action executes.)</p>
+                                    <img src="./img9.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+
+                                    <p style="padding-bottom: 10px;"><b>Execution for export multiple product records in single file.</b></p>
+                                    <p style="padding-bottom: 10px;">We have given separate process for it, you need to click on 'Export Records' menu, a wizard like this will open.</p>
+                                    <p>You need to select mapping model of product variant which you created.</p>
+                                    <p>You can select single/multiple product records in products field.</p>
+                                    <p style="padding: 10px 0px 10px;">Upon completion of the process, EDI transactions will be created for the Outgoing type. These transactions can be processed manually or automatically through a scheduled action.</p>
+                                    <img src="./img27.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                    <p style="padding: 10px 0px 10px;">If something goes wrong or required field values are missing, those EDI transaction records will be set to a failed state, and a log will be generated for them. After rectifying the issue, you can recompute the XML content by clicking the 'Re-compute' button. Upon successful recomputation, the XML content will be available, and the state will change to draft.</p>
+                                    <img src="./img19.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                    <img src="./img20.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;">
+                                    
+                                    
+                                    <h5 style="padding-bottom: 20px; margin-top: 30px;">3. To process EDI Transactions through Scheduled Action (Cron)</h5>
+                                    <p style="padding-bottom: 10px;"><b>From the scheduled action, all EDI transactions in the draft state are processed based on the type.</b></p>
+                                    <p><b>Outgoing type:</b> Records will be exported/uploaded to FTP/SFTP from Odoo. Based on the configuration table, the XML file will be uploaded to the directory specified in the configuration.</p>
+                                    <p style="padding-bottom: 10px;">On successful EDI transaction processed that record will move to the done state, if any issue arises then it will move into the failed state & log will generated to check issue.</p>
+                                    <h5 style="padding: 10px 0px 10px;">Scheduled Action</h5>
+                                    <img src="./img11.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;"> 
+                                    <p style="padding-bottom: 10px;">Outgoing record: XML file is generated and exported to the configured FTP/SFTP directory.</p>
+                                    <img src="./img14.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;"> 
+
+                                    <h5 style="padding-bottom: 20px; margin-top: 30px;">4. Log management</h5>
+                                    <p style="padding-bottom: 10px;">A log is created for reference in case of any faults during the export process.</p>
+                                    <p style="padding-bottom: 10px;">We also set a scheduled action to delete log records older than 13 days.</p>
+                                    <img src="./img15.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;"> 
+                                    <img src="./img16.png" class="shadow img img-fluid edi_image" style="margin: 20px 0px;"> 
+                                  </section>
+                                </div>
+                              
+                                <div class="tab-pane" id="faqs" role="tabpanel" aria-labelledby="faqs_tab">
+                                    <div class="mb48"></div>
+                                    <div class="fullrow shadow" style="padding: 16px;border-radius: 10px;margin-bottom: 20px;">
+                                      <span><img src="./img/right-aerrow.png" class="img img-fluid" style="margin-right: 12px; width: 3%;"></span><span style="font-size: 20px; font-weight: bold;">I need an extra customization in this application, how can I get it?</span>
+                                      <ul style="margin-top: 10px;"><li>Yes, you can contact us on support@vrajatechnologies.com or can schedule a DEMO with our team to customize additional features.</li></ul>
+                                    </div>
+                                    <div class="fullrow shadow" style="padding: 16px;border-radius: 10px;margin-bottom: 20px;">
+                                      <span><img src="./img/right-aerrow.png" class="img img-fluid" style="margin-right: 12px; width: 3%;"></span><span style="font-size: 20px; font-weight: bold;"> Is the application compatible with Odoo Enterprise and Community?</span>
+                                      <ul style="margin-top: 10px;"><li>Yes, this application module is supported by both. It is also compatible with test and production environments.</li></ul>
+                                    </div>
+                                    <div class="fullrow shadow" style="padding: 16px;border-radius: 10px;margin-bottom: 20px;">
+                                      <span><img src="./img/right-aerrow.png" class="img img-fluid" style="margin-right: 12px; width: 3%;"></span><span style="font-size: 20px; font-weight: bold;">Do I get free upgrades and support if I purchase this application?</span>
+                                      <ul style="margin-top: 10px;"><li>If there is a bug or any issues, our team will be there to help you out. If you need to add any new features, you will need to upgrade the application.</li></ul>
+                                    </div>
+                                    <div class="fullrow shadow" style="padding: 16px;border-radius: 10px;margin-bottom: 20px;">
+                                      <span><img src="./img/right-aerrow.png" class="img img-fluid" style="margin-right: 12px; width: 3%;"></span><span style="font-size: 20px; font-weight: bold;">Is technical knowledge required to set up the integration?</span>
+                                      <ul style="margin-top: 10px;"><li>While some technical understanding may be helpful, the integration is designed to be user-friendly. Detailed documentation and support may be provided to aid in the setup process.</li></ul>
+                                    </div>
+                                    <div class="fullrow shadow" style="padding: 16px;border-radius: 10px;margin-bottom: 20px;">
+                                      <span><img src="./img/right-aerrow.png" class="img img-fluid" style="margin-right: 12px; width: 3%;"></span><span style="font-size: 20px; font-weight: bold;">Is this free customization and implementation?</span>
+                                      <ul style="margin-top: 10px;"><li>Our team has produced a support video that guides you through the implementation process step by step. If you encounter any issues, please feel free to contact us for assistance.</li></ul>
+                                    </div>
+                                    <div class="fullrow shadow" style="padding: 16px;border-radius: 10px;margin-bottom: 20px;">
+                                      <span><img src="./img/right-aerrow.png" class="img img-fluid" style="margin-right: 12px; width: 3%;"></span><span style="font-size: 20px; font-weight: bold;">Which protocol you have used to transfer file?</span>
+                                      <ul style="margin-top: 10px;"><li>We have used FTP protocol to transfer files.</li></ul>
+                                    </div>
+                                    <div class="fullrow shadow" style="padding: 16px;border-radius: 10px;margin-bottom: 20px;">
+                                      <span><img src="./img/right-aerrow.png" class="img img-fluid" style="margin-right: 12px; width: 3%;"></span><span style="font-size: 20px; font-weight: bold;">Does this support all type of import records?</span>
+                                      <ul style="margin-top: 10px;"><li>Yes, mostly all types of records will supported, for import inventory we have given separate configuration that mentioned in documentation.</li></ul>
+                                    </div>
+                                    <div class="fullrow shadow" style="padding: 16px;border-radius: 10px;margin-bottom: 20px;">
+                                      <span><img src="./img/right-aerrow.png" class="img img-fluid" style="margin-right: 12px; width: 3%;"></span><span style="font-size: 20px; font-weight: bold;"> Which file format supported?</span>
+                                      <ul style="margin-top: 10px;"><li> XML file format supported.</li></ul>
+                                    </div>
+                                    <div class="fullrow shadow" style="padding: 16px;border-radius: 10px;margin-bottom: 20px;">
+                                      <span><img src="./img/right-aerrow.png" class="img img-fluid" style="margin-right: 12px; width: 3%;"></span><span style="font-size: 20px; font-weight: bold;"> From one directory currently 5 files are there & those imported in Odoo, next time when there are total 10 files(5 old and 5 new) that time if  I fetch inner files from same directory is it create old records again in Odoo?</span>
+                                      <ul style="margin-top: 10px;"><li>No, we have managed that thing. Only new files will import in Odoo & from those files records will create.</li></ul>
+                                    </div>
+                                    <div class="fullrow shadow" style="padding: 16px;border-radius: 10px;margin-bottom: 20px;">
+                                      <span><img src="./img/right-aerrow.png" class="img img-fluid" style="margin-right: 12px; width: 3%;"></span><span style="font-size: 20px; font-weight: bold;"> Once records exported from Odoo to FTP, is that export again?</span>
+                                      <ul style="margin-top: 10px;"><li>No, we have managed that thing. Those records which exported that not export again, system only pick fresh records next time.</li></ul>
+                                    </div>    
+                                </div>
+
+                                <div class="tab-pane" id="user_guide" role="tabpanel" aria-labelledby="user_guide_tab">
+                                  <div class="mb64">
+                                  </div>
+                                    <section class="oe_container mt32 mb32" style="background-color: transparent !important;">
+                                        <h4 style="margin-bottom: 30px; font-weight: bold;">Submit a Support Ticket</h4>
+                                        <p>If you encounter any issues while using our app that are caused by the app itself, we offer complimentary support for 90 days from the date of purchase.
+                                        </p>
+                                        <p>To create a support ticket, please register via the Vraja Technologies Support Email and provide the necessary details so we can assist you in resolving the issue.
+                                        </p>
+                                        <div class="row threelink" style="margin-top: 70px;">
+                                          <div class="mt32 mb32">
+                                            <div style="display:block; margin:0 auto; text-align:center">
+                                                <div style="vertical-align:middle" class="d-inline-block mx-3 my-3">
+                                                    <img class="img img-responsive mb-3" style="width:30px" src="./img/Untitled design.png">
+                                                    <p style="font-weight:500; font-family:roboto; line-height:1.8; color:#0f1e40">
+                                                      Email Us
+                                                    </p>
+                                                    <div style="font-weight:500; font-size:15px; margin:0 auto; border:1px solid #0074ff; display:flex; background-color:#0074ff; border-radius:10px">
+                                                        <div class="text-center" style="color:#091E42; font-family:Montserrat; padding:0">
+                                                            <span class="bg-white position-relative shadow" style="padding:7px; color:#0f1e40; float:left; font-weight:600; width:65px; vertical-align:middle; border-bottom-left-radius:9px; border-top-left-radius:9px; font-size:12px; height:50px"> <span class="text-start d-inline-block ps-2">COPY LINK</span>                                            <span class="fa fa-play text-white position-absolute" style="font-size:18px; margin:10px 0px 0 5px; height:16px"></span> </span>
+                                                            <p style="vertical-align:middle; border-top-right-radius:9px; border-bottom-right-radius:9px; line-height:50px; color:#fff; font-weight:500; margin:0px 15px 0px 80px">support@vrajatechnologies.com</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="vertical-align:middle" class="d-none d-lg-inline-block mx-3">
+                                                    <img class="img img-responsive" src="//apps.odoocdn.com/apps/assets/17.0/amazon_ept/video_tutorial_link.svg?212da3a" style="margin:0 auto; display:block; width:1px; height:150px ; background-color:#dbe2e8;">
+                                                </div>
+                                                <div style="vertical-align:middle" class="d-inline-block mx-3 my-3">
+                                                  <img class="img img-responsive mb-3" style="width:30px" src="./img/Untitled design (5) 1.png">
+                                                  <p style="font-weight:500; font-family:roboto; line-height:1.8; color:#0f1e40">
+                                                      Contact Us
+                                                  </p>
+                                                  <div style="font-weight:500; font-size:15px; margin:0 auto; border:1px solid #0074ff; display:flex; background-color:#0074ff; border-radius:10px">
+                                                      <div class="text-center" style="color:#091E42; font-family:Montserrat; padding:0">
+                                                          <span class="bg-white position-relative shadow" style="padding:7px; color:#0f1e40; float:left; font-weight:600; width:65px; vertical-align:middle; border-bottom-left-radius:9px; border-top-left-radius:9px; font-size:12px; height:50px"> 
+                                                            <span class="text-start d-inline-block ps-2">COPY LINK</span>                                            
+                                                          <span class="fa fa-play text-white position-absolute" style="font-size:18px; margin:10px 0px 0 5px; height:16px"></span> </span>
+                                                          <p style="vertical-align:middle; border-top-right-radius:9px; border-bottom-right-radius:9px; line-height:50px; color:#fff; font-weight:500; margin:0px 15px 0px 80px">vrajatechnologies.com/contactus</p>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                                <div style="vertical-align:middle" class="d-none d-lg-inline-block mx-3">
+                                                    <img class="img img-responsive" src="//apps.odoocdn.com/apps/assets/17.0/amazon_ept/vertical_line.svg?212da3a" style="margin:0 auto; display:block; width:1px; height:150px">
+                                                </div>
+                                                <div style="vertical-align:middle" class="d-inline-block mx-3 my-3">
+                                                    <img class="img img-responsive mb-3" style="width:30px" src="./img/support.png">
+                                                    <p style="font-weight:500; font-family:roboto; line-height:1.8; color:#0f1e40">
+                                                        Support
+                                                    </p>
+                                                    <div style="font-weight:500; font-size:15px; margin:0 auto; border:1px solid #0074ff; display:flex; background-color:#0074ff; border-radius:10px">
+                                                        <div class="text-center" style="color:#091E42; font-family:Montserrat; padding:0">
+                                                            <span class="bg-white position-relative shadow" style="padding:7px; color:#0f1e40; float:left; font-weight:600; width:65px; vertical-align:middle; border-bottom-left-radius:9px; border-top-left-radius:9px; font-size:12px; height:50px"> 
+                                                              <span class="text-start d-inline-block ps-2">COPY LINK</span>                                            
+                                                            <span class="fa fa-play text-white position-absolute" style="font-size:18px; margin:10px 0px 0 5px; height:16px"></span> </span>
+                                                            <p style="vertical-align:middle; border-top-right-radius:9px; border-bottom-right-radius:9px; line-height:50px; color:#fff; font-weight:500; margin:0px 15px 0px 80px">vrajatechnologies.com/support-policy</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </section>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+          </section>
+          <section class="company_logo" style="margin-top: 100px;">
+            <div class="feature_heading text-center" style="margin-bottom: 60px;">
+              <h3><span style="color: #4082F0;">Suggested</span> Application </h3>
+            </div>
+            <div class="container" style="max-width: 1040px;">
+              <div class="row" style="margin: 0px 0px;text-align: center;display: flex;justify-content: center;align-items: center;">
+                <div class="col-lg-3" style=" margin-bottom: 70px;">
+                  <a href="https://apps.odoo.com/apps/modules/17.0/fedex_shipping_odoo_integration"><img src="./img/fedex.png" class="img img-fluid" style="width: 60%;"></a>
+                </div>
+                <div class="col-lg-3" style=" margin-bottom: 70px;" >
+                  <a href="https://apps.odoo.com/apps/modules/17.0/mrw_shipping_integration_vts"><img src="./img/mrw.svg" class="img img-fluid" style="width: 60%;"></a>
+                </div>
+                <div class="col-lg-3" style=" margin-bottom: 70px;" >
+                  <a href="https://apps.odoo.com/apps/modules/browse?search=gls+vraja+technologies"><img src="./img/gls.png" class="img img-fluid" style="width: 60%;"></a>
+                </div>
+                <div class="col-lg-3" style=" margin-bottom: 70px;" >
+                  <a href="https://apps.odoo.com/apps/modules/browse?search=dpd+vraja+technologies"><img src="./img/dpd.png" class="img img-fluid" style="width: 60%;"></a>
+                </div>
+                <div class="col-lg-3" style=" margin-bottom: 60px;">
+                  <a href="https://apps.odoo.com/apps/modules/17.0/estafeta_odoo_integration"><img src="./img/estafeta-logo-ca.png" class="img img-fluid" style="width: 60%;"></a>
+                </div>
+                <div class="col-lg-3" style=" margin-bottom: 60px;">
+                  <a href="https://apps.odoo.com/apps/modules/17.0/seur_odoo_interation"><img src="./img/seur_LOGO.2e16d0ba.fill-279x140.png" class="img img-fluid" style="width: 60%;"></a>
+                </div>
+                <div class="col-lg-3" style=" margin-bottom: 60px;">
+                <a href="https://apps.odoo.com/apps/modules/17.0/shipstation_shipping_odoo_integration"> <img src="./img/ShipStation-logo-black.png" class="img img-fluid" style="width: 60%;"></a>
+                </div>
+                <div class="col-lg-3" style=" margin-bottom: 60px;">
+                  <a href="https://apps.odoo.com/apps/modules/17.0/freightcom_shipping_integration"><img src="./img/Freightcom-logo-linear.webp" class="img img-fluid" style="width: 60%;"></a>
+                </div>
+                <div class="col-lg-3" style=" margin-bottom: 40px;">
+                  <a href="https://apps.odoo.com/apps/modules/17.0/stamps_shipping_integration"><img src="./img/Stamps.com_logo.png" class="img img-fluid" style="width: 60%;"></a>
+                </div>
+                <div class="col-lg-3" style=" margin-bottom: 40px;">
+                <a href="https://apps.odoo.com/apps/modules/17.0/correos_express_shipping_integration"> <img src="./img/correos_express.png" class="img img-fluid" style="width: 60%;"></a>
+                </div>
+                <div class="col-lg-3" style=" margin-bottom: 40px;">
+                  <a href="https://apps.odoo.com/apps/modules/browse?search=dhl+vraja+technologies"><img src="./img/DHL-Logo.png" class="img img-fluid" style="width: 60%;"></a>
+                </div>
+                <div class="col-lg-3" style=" margin-bottom: 40px;">
+                <a href="https://apps.odoo.com/apps/modules/17.0/ups_shipping_odoo_integration"><img src="./img/UPS-logo.png" class="img img-fluid" style="width: 60%;"></a> 
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="trusted_cmpny text-center" style="margin-top: 80px;">
+              <img src="./img/3 .png" class="img-fluid img" style="width: 90%;border-radius: 20px;">
+          </section>      
+        </div>
+    </section>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/fontawesome-free-6.2.1@6.2.1/js/all.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+   
+  </body>
+</html>

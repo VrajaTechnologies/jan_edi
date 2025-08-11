@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_tree_ftp_attachment_vts" model="ir.ui.view">
+        <field name="name">view_tree_ftp_attachment_vts</field>
+        <field name="model">ftp.attachment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="attachment_id"/>
+                <field name="sync_date" string="Fetch Date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_form_ftp_attachment_vts" model="ir.ui.view">
+        <field name="name">view_form_ftp_attachment_vts</field>
+        <field name="model">ftp.attachment</field>
+        <field name="arch" type="xml">
+            <form string="ftp Form">
+                <sheet>
+                    <group string="FTP ATTACHMENTS" name="FTP_attachments_main">
+                        <group name="FTP_attachments_sub">
+                            <field name="attachment_id"/>
+                            <field name="sync_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Parsed content">
+                            <field name="file_content"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ftp_attachment_vts" model="ir.actions.act_window">
+        <field name="name">FTP Attachment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ftp.attachment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
