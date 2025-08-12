@@ -34,6 +34,7 @@
         'views/ftp_syncing_view.xml',
         'views/edi_config_table_view.xml',
         'views/edi_transactions_view.xml',
+        'views/translation_table.xml',
         'views/logs_details.xml',
         'views/ftp_list_view.xml',
         'views/sftp_syncing_view.xml',

@@ -146,6 +146,12 @@ class EDIConfigTable(models.Model):
         copy=False,
         tracking=True
     )
+    is_translation_required = fields.Boolean(
+        string='Is Translation Required?',
+        copy=False,
+        default=False,
+        tracking=True
+    )
 
     @api.model_create_multi
     def create(self, vals_list):
