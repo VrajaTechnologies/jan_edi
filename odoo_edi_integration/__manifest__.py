@@ -1,7 +1,7 @@
 {
     # App information
     'name': 'EDI Connector (FTP/SFTP Connector / XML File Format)',
-    'version': '1.10.0', # v17
+    'version': '1.11.0', # v17
     'category': 'Purchases',
     'summary': """
     This module integrates with FTP/SFTP servers to retrieve folder structures and create file attachments, 
@@ -73,3 +73,4 @@
 # 1.8.0 (13-3-25) => Added feature that handles split files if they are big or having too many records.
 # 1.9.0 (25-4-25) => Added feature that handles nested element in export file process and export multiple records in single file.
 # 1.10.0 (1-8-25) => Exporting Specific Records (Given filter)
+#1.11.0 (12-08-25) => Mithilesh branch
