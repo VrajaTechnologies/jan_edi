@@ -7,4 +7,5 @@ from . import edi_transactions
 from . import ftp_list
 from . import sftp_syncing
 from . import ir_cron
+from . import translation_table
 from .import http_rounte_mapping_table

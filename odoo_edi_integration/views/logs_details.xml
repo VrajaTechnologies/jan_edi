@@ -102,7 +102,7 @@
     </data>
 
     <menuitem id="menu_edi_logs_details" name="Logs Details"
-              parent="odoo_edi_integration.menu_edi_config_table" sequence="20"/>
+              parent="odoo_edi_integration.menu_edi_config_table" sequence="5"/>
     <menuitem id="menu_item_edi_log" name="Logs" parent="menu_edi_logs_details"
               action="odoo_edi_integration.action_log_book" sequence="0"/>
     <menuitem id="menu_item_edi_log_detail" name="Log Line" parent="menu_edi_logs_details"

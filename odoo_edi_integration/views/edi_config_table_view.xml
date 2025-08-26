@@ -70,6 +70,8 @@
                             <field name="partner_id" invisible="edi_type != 'Outgoing' or main_table != True"/>
                             <field name="export_ftp_folder" invisible="edi_type  != 'Outgoing' or main_table != True"
                                    required="edi_type == 'Outgoing' and main_table == True"/>
+                            <field name="is_translation_required"
+                                   invisible="edi_type  != 'Incoming'"/>
                         </group>
                     </group>
                     <notebook name="Notebook">

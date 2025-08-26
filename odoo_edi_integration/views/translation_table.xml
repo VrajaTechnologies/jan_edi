@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_translation_table_tree" model="ir.ui.view">
+        <field name="name">translation.table.tree</field>
+        <field name="model">translation.table</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="edi_config_table_id"/>
+                <field name="xml_element"/>
+                <field name="xml_value"/>
+                <field name="corresponding_odoo_value"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_translation_table_form" model="ir.ui.view">
+        <field name="name">translation.table.form</field>
+        <field name="model">translation.table</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="edi_config_table_id"/>
+                            <field name="xml_element"/>
+                        </group>
+                        <group>
+                            <field name="xml_value"/>
+                            <field name="corresponding_odoo_value"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="edi_translation_table_action" model="ir.actions.act_window">
+        <field name="name">Translation Table Configuration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">translation.table</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_item_edi_translation_table_configuration"
+              name="Translation Table Configuration"
+              parent="odoo_edi_integration.menu_edi_config_table"
+              action="edi_translation_table_action" sequence="4"
+    />
+
+</odoo>

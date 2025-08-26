@@ -9,4 +9,5 @@ access.edi.transactions,access_edi_transactions,model_edi_transactions,,1,1,1,1
 access_main_logs,manager_main_logs,model_log_book,,1,1,1,1
 access_logs_line,manager_logs_line,model_log_book_lines,,1,1,1,1
 access_sftp_syncing,access_sftp_syncing,model_sftp_syncing,,1,1,1,1
+access.translation.table,access_translation_table,model_translation_table,base.group_user,1,1,1,1
 access.edi.export.records.wizard,access_edi_export_records_wizard,model_edi_export_records_wizard,base.group_user,1,1,1,1

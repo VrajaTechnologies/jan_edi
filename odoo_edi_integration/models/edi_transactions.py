@@ -382,9 +382,18 @@ class EDITransactions(models.Model):
                     else:
                         line = None
 
-                mapped_field = odoo_line.odoo_field
-                if not line:
+                # If translation is required, then from translation table find corresponding Odoo value.
+                if line and mapping_edi_table.is_translation_required:
+                    translation_record = self.env['translation.table'].sudo().search(
+                        [('edi_config_table_id', '=', mapping_edi_table.id),
+                         ('xml_element', '=', odoo_line.xml_element),
+                         ('xml_value', '=', line)], limit=1)
+                    if translation_record and translation_record.corresponding_odoo_value:
+                        line = translation_record.corresponding_odoo_value
+                else:
                     continue
+
+                mapped_field = odoo_line.odoo_field
                 try:
                     if mapped_field.ttype != 'one2many':
                         vals_dict, create_record, log_msg = self._prepare_vals_from_attachment(odoo_line, line,
@@ -414,7 +423,16 @@ class EDITransactions(models.Model):
                                         o2m_line = o2m_line[header]
                                     else:
                                         o2m_line = None
-                                if not o2m_line:
+
+                                # If translation is required, then from translation table find corresponding Odoo value.
+                                if o2m_line and sub_table_for_o2m.is_translation_required:
+                                    translation_record = self.env['translation.table'].sudo().search(
+                                        [('edi_config_table_id', '=', sub_table_for_o2m.id),
+                                         ('xml_element', '=', o2m_field_line.xml_element),
+                                         ('xml_value', '=', o2m_line)], limit=1)
+                                    if translation_record and translation_record.corresponding_odoo_value:
+                                        o2m_line = translation_record.corresponding_odoo_value
+                                else:
                                     continue
                                 o2m_field = o2m_field_line.odoo_field
                                 vals_dict, create_record, log_msg = self._prepare_vals_from_attachment(o2m_field_line,
@@ -541,12 +559,11 @@ class EDITransactions(models.Model):
                         condition[0] == 'location_id' for condition in search_domain):
                     search_domain.append(('location_id', '=', inventory_location.id))
                 if search_domain:
-                    existing_main_record = self.env[mapping_edi_table.model_id.model].search(search_domain, limit=1)
+                    existing_main_record = self.env[mapping_edi_table.model_id.model].sudo().search(search_domain, limit=1)
 
             for odoo_line in mapping_edi_table.line_ids:
 
                 xml_path = odoo_line.xml_element.split("/")  # Split sub_directories into list items
-
                 # Traverse the dictionary
                 nested_value = item
                 for key in xml_path:
@@ -566,10 +583,19 @@ class EDITransactions(models.Model):
                     continue
 
                 line = nested_value
-                # line = item[odoo_line.xml_element]
-                mapped_field = odoo_line.odoo_field
-                if not line:
+
+                # If translation is required, then from translation table find corresponding Odoo value.
+                if line and mapping_edi_table.is_translation_required:
+                    translation_record = self.env['translation.table'].sudo().search(
+                        [('edi_config_table_id', '=', mapping_edi_table.id),
+                         ('xml_element', '=', odoo_line.xml_element),
+                         ('xml_value', '=', line)], limit=1)
+                    if translation_record and translation_record.corresponding_odoo_value:
+                        line = translation_record.corresponding_odoo_value
+                else:
                     continue
+
+                mapped_field = odoo_line.odoo_field
                 try:
                     if mapped_field.ttype != 'one2many':
                         vals_dict, create_record, log_msg = self._prepare_vals_from_attachment(odoo_line, line,
@@ -593,7 +619,23 @@ class EDITransactions(models.Model):
                         for value in line:
                             vals_for_o2m = {}
                             for o2m_field_line in sub_table_for_o2m.line_ids:
-                                o2m_line = value[o2m_field_line.xml_element]
+                                o2m_line = value
+                                for header in (o2m_field_line.xml_element or "").split("/"):
+                                    if header in o2m_line:
+                                        o2m_line = o2m_line[header]
+                                    else:
+                                        o2m_line = None
+
+                                # If translation is required, then from translation table find corresponding Odoo value.
+                                if o2m_line and sub_table_for_o2m.is_translation_required:
+                                    translation_record = self.env['translation.table'].sudo().search(
+                                        [('edi_config_table_id', '=', sub_table_for_o2m.id),
+                                         ('xml_element', '=', o2m_field_line.xml_element),
+                                         ('xml_value', '=', o2m_line)], limit=1)
+                                    if translation_record and translation_record.corresponding_odoo_value:
+                                        o2m_line = translation_record.corresponding_odoo_value
+                                else:
+                                    continue
                                 o2m_field = o2m_field_line.odoo_field
                                 vals_dict, create_record, log_msg = self._prepare_vals_from_attachment(o2m_field_line,
                                                                                                        o2m_line,
