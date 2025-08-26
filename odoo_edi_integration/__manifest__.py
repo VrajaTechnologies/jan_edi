@@ -38,6 +38,7 @@
         'views/ftp_list_view.xml',
         'views/sftp_syncing_view.xml',
         'views/ftp_attachment_view.xml',
+        'views/http_route_mapping_table.xml',
         'wizard/edi_export_records_wizard.xml',
         'data/ir_cron.xml',
     ],

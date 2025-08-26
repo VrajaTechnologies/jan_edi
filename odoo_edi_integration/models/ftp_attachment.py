@@ -50,6 +50,9 @@ class FtpAttachment(models.Model):
         Author: DG
         """
         attachments = super(FtpAttachment, self).create(vals_list)
+        if self.env.context.get('from_controller'):
+            _logger.info("Skipping edi.transaction creation because attachment is created from controller.")
+            return attachments
         for rec in attachments:
             edi_transaction = self.env["edi.transactions"]
             edi_config_table_id = self.env['edi.config.table']

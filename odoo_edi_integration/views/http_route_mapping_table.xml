@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree view for http.route.mapping.table -->
+        <record id="http_route_mapping_table_tree" model="ir.ui.view">
+            <field name="name">http.route.mapping.table.tree</field>
+            <field name="model">http.route.mapping.table</field>
+            <field name="arch" type="xml">
+                <tree string="HTTP Route Mapping">
+                    <field name="route_name"/>
+                    <field name="edi_config_table_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for http.route.mapping.table -->
+        <record id="http_route_mapping_table_form" model="ir.ui.view">
+            <field name="name">http.route.mapping.table.form</field>
+            <field name="model">http.route.mapping.table</field>
+            <field name="arch" type="xml">
+                <form string="HTTP Route Mapping">
+                    <sheet>
+                        <group>
+                            <field name="route_name"/>
+                            <field name="edi_config_table_id" domain="[('main_table', '=', True)]"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for http.route.mapping.table -->
+        <record id="action_http_route_mapping" model="ir.actions.act_window">
+            <field name="name">HTTP Route Mapping</field>
+            <field name="res_model">http.route.mapping.table</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="http_route_mapping_table_tree"/>
+        </record>
+
+        <menuitem id="menu_item_config_http_route_table_configuration" name="Http Route Table Configuration" parent="menu_edi_config_table"
+              action="action_http_route_mapping" sequence="2"/>
+        <!-- Top-level menu for HTTP Route Mapping -->
+<!--        <menuitem id="menu_http_route_mapping"-->
+<!--                  name="HTTP Route Mapping"-->
+<!--                  action="action_http_route_mapping"-->
+<!--                  sequence="10"-->
+<!--                  web_icon="odoo_edi_integration,static/description/route_mapping.png"/>-->
+    </data>
+</odoo>

@@ -36,5 +36,5 @@
               name="Export Records"
               parent="menu_edi_config_table"
               action="edi_export_records_wizard_action"
-              sequence="3"/>
+              sequence="4"/>
 </odoo>

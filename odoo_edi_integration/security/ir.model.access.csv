@@ -1,5 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ftp_syncing,access_ftp_syncing,model_ftp_syncing,,1,1,1,1
+access_http_route_mapping_table,access_http_route_mapping_table,model_http_route_mapping_table,,1,1,1,1
 access_ftp_list,ftp_list_group,model_ftp_list,,1,1,1,1
 access_ftp_attachment,ftp_attachment_group,model_ftp_attachment,,1,1,1,1
 access.edi.config.table,access_edi_config_table,model_edi_config_table,,1,1,1,1

@@ -69,6 +69,6 @@
 
     <menuitem id="menu_item_edi_transactions" name="EDI Transactions"
               parent="odoo_edi_integration.menu_edi_config_table"
-              action="edi_transactions_action" sequence="2"/>
+              action="edi_transactions_action" sequence="3"/>
 
 </odoo>
