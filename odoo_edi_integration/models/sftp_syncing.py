@@ -48,6 +48,22 @@ class SFTPSyncing(models.Model):
         auto_join=True
     )
 
+    # Authentication Option Fields
+    sftp_auth_method = fields.Selection(
+        selection=[('password', 'Password'), ('pem_key', 'PEM Key')],
+        string='Authentication Method',
+        default='password',
+        help="Select method for authentication."
+    )
+    sftp_pem_key = fields.Binary(
+        string="PEM Key File",
+        help="Upload the PEM private key file for key-based authentication."
+    )
+    sftp_pem_passphrase = fields.Char(
+        string="PEM Key Passphrase",
+        help="The passphrase for your PEM key, if Passphrase is configured during key generation."
+    )
+
     def check_sftp_connection(self):
         """
         This method is used to connect SFTP with using host, port, username & password.
@@ -56,16 +72,45 @@ class SFTPSyncing(models.Model):
         try:
             sftp_host = self.sftp_host
             sftp_username = self.sftp_username
-            sftp_password = '' if self._context.get('sftp_password') else self.sftp_password
             sftp_port = int(self.sftp_port)
+
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            ssh.connect(hostname=sftp_host, username=sftp_username, password=sftp_password, port=sftp_port or 2222)
+            connect_parameters = {
+                'hostname' : sftp_host,
+                'username' : sftp_username,
+                'port' : sftp_port or 2222
+            }
+
+            temp_key_file_path = None
+
+            if self.sftp_auth_method == 'password':
+                sftp_password = '' if self._context.get('sftp_password') else self.sftp_password
+                connect_parameters['password'] = sftp_password
+                _logger.info(f"----------Login to SFTP via Username and Password.----------")
+
+            else:
+                with tempfile.NamedTemporaryFile(delete=False, mode='wb') as temp_key_file:
+                    temp_key_file.write(base64.b64decode(self.sftp_pem_key))
+                    temp_key_file.close()
+                temp_key_file_path = temp_key_file.name
+                connect_parameters['key_filename'] = temp_key_file_path
+
+                if self.sftp_pem_passphrase:
+                    connect_parameters['passphrase'] = self.sftp_pem_passphrase
+                _logger.info(f"----------Login to SFTP via PEM Key.----------")
+
+            ssh.connect(**connect_parameters)
             sftp_client = ssh.open_sftp()
             return sftp_client
+
         except Exception as e:
             if not self._context.get('sftp_password'):
                 raise UserError(_("SFTP Connection Test Failed! Here is what we got instead:\n %s") % (e))
+
+        finally:
+            if temp_key_file_path and os.path.exists(temp_key_file_path):
+                os.unlink(temp_key_file_path)
 
     def action_check_sftp_disconnect(self):
         """
