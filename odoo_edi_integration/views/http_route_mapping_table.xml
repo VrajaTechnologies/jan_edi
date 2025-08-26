@@ -31,20 +31,14 @@
 
         <!-- Action for http.route.mapping.table -->
         <record id="action_http_route_mapping" model="ir.actions.act_window">
-            <field name="name">HTTP Route Mapping</field>
+            <field name="name">HTTP Route Configuration</field>
             <field name="res_model">http.route.mapping.table</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="http_route_mapping_table_tree"/>
         </record>
 
-        <menuitem id="menu_item_config_http_route_table_configuration" name="Http Route Table Configuration" parent="menu_edi_config_table"
+        <menuitem id="menu_item_config_http_route_table_configuration" name="Http Route Configuration" parent="menu_edi_config_table"
               action="action_http_route_mapping" sequence="2"/>
-        <!-- Top-level menu for HTTP Route Mapping -->
-<!--        <menuitem id="menu_http_route_mapping"-->
-<!--                  name="HTTP Route Mapping"-->
-<!--                  action="action_http_route_mapping"-->
-<!--                  sequence="10"-->
-<!--                  web_icon="odoo_edi_integration,static/description/route_mapping.png"/>-->
     </data>
 </odoo>
