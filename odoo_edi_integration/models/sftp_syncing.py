@@ -50,7 +50,7 @@ class SFTPSyncing(models.Model):
 
     # Authentication Option Fields
     sftp_auth_method = fields.Selection(
-        selection=[('password', 'Password'), ('pem_key', 'PEM Key')],
+        selection=[('password', 'Password'), ('pem_key', 'PEM/PPK Key')],
         string='Authentication Method',
         default='password',
         help="Select method for authentication."
@@ -94,6 +94,14 @@ class SFTPSyncing(models.Model):
                     temp_key_file.write(base64.b64decode(self.sftp_pem_key))
                     temp_key_file.close()
                 temp_key_file_path = temp_key_file.name
+                with open(temp_key_file_path, "r+") as f:
+                    lines = f.readlines()
+                    lines[0] = "-----BEGIN OPENSSH PRIVATE KEY-----\n"
+                    lines[-1] = "-----END OPENSSH PRIVATE KEY-----"
+                    f.seek(0)
+                    f.writelines(lines)
+                    f.truncate()
+                    f.close()
                 connect_parameters['key_filename'] = temp_key_file_path
 
                 if self.sftp_pem_passphrase:
