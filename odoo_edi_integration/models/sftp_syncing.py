@@ -4,11 +4,12 @@ import os
 import tempfile
 import paramiko
 import xmltodict
-from odoo import api, fields, models, _
+import io
 import base64
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 from datetime import datetime, timedelta
-
+# from cryptography.hazmat.primitives import serialization
 
 _logger = logging.getLogger(__name__)
 
@@ -64,6 +65,29 @@ class SFTPSyncing(models.Model):
         help="The passphrase for your PEM key, if Passphrase is configured during key generation."
     )
 
+    @staticmethod
+    def convert_ppk_to_pem(ppk_content_io, passphrase=None):
+        # Read the content from the BytesIO object and decode it to a string.
+        ppk_content_str = ppk_content_io.getvalue().decode('utf-8')
+
+        # try:
+        pkey = paramiko.RSAKey.from_private_key(io.StringIO(ppk_content_str), password=passphrase)
+        # except paramiko.SSHException:
+        #     # Fallback to general PKey.from_private_key if RSAKey fails
+        #     pkey = paramiko.PKey.from_private_key(io.StringIO(ppk_content_str), password=passphrase)
+
+        # # Get the private key object from the loaded PKey
+        # private_key = pkey.key
+        #
+        # # Serialize the private key to PEM format. We use PKCS8 format for broad compatibility
+        # # and set encryption_algorithm to NoEncryption() as the passphrase is used for conversion.
+        # pem_content = private_key.private_bytes(
+        #     encoding=serialization.Encoding.PEM,
+        #     format=serialization.PrivateFormat.PKCS8,
+        #     encryption_algorithm=serialization.NoEncryption()
+        # )
+        return pkey
+
     def check_sftp_connection(self):
         """
         This method is used to connect SFTP with using host, port, username & password.
@@ -82,7 +106,7 @@ class SFTPSyncing(models.Model):
                 'port' : sftp_port or 2222
             }
 
-            temp_key_file_path = None
+            # temp_key_file_path = None
 
             if self.sftp_auth_method == 'password':
                 sftp_password = '' if self._context.get('sftp_password') else self.sftp_password
@@ -90,23 +114,34 @@ class SFTPSyncing(models.Model):
                 _logger.info(f"----------Login to SFTP via Username and Password.----------")
 
             else:
-                with tempfile.NamedTemporaryFile(delete=False, mode='wb') as temp_key_file:
-                    temp_key_file.write(base64.b64decode(self.sftp_pem_key))
-                    temp_key_file.close()
-                temp_key_file_path = temp_key_file.name
-                with open(temp_key_file_path, "r+") as f:
-                    lines = f.readlines()
-                    lines[0] = "-----BEGIN OPENSSH PRIVATE KEY-----\n"
-                    lines[-1] = "-----END OPENSSH PRIVATE KEY-----"
-                    f.seek(0)
-                    f.writelines(lines)
-                    f.truncate()
-                    f.close()
-                connect_parameters['key_filename'] = temp_key_file_path
+                # Decode the base64 encoded PPK content
+                ppk_content_bytes = base64.b64decode(self.sftp_pem_key)
+                ppk_content_io = io.BytesIO(ppk_content_bytes)
+
+                # Convert the PPK key to PEM format
+                private_key = self.convert_ppk_to_pem(
+                    ppk_content_io,
+                    self.sftp_pem_passphrase.encode() if self.sftp_pem_passphrase else None
+                )
+
+                # with tempfile.NamedTemporaryFile(delete=False, mode='wb') as temp_key_file:
+                #     # temp_key_file.write(base64.b64decode(self.sftp_pem_key))
+                #     temp_key_file.write(pem_key_bytes)
+                #     temp_key_file.close()
+                # temp_key_file_path = temp_key_file.name
+                # with open(temp_key_file_path, "r+") as f:
+                #     lines = f.readlines()
+                #     lines[0] = "-----BEGIN OPENSSH PRIVATE KEY-----\n"
+                #     lines[-1] = "-----END OPENSSH PRIVATE KEY-----\n"
+                #     f.seek(0)
+                #     f.writelines(lines)
+                #     f.truncate()
+                #     f.close()
+                connect_parameters['pkey'] = private_key
 
                 if self.sftp_pem_passphrase:
                     connect_parameters['passphrase'] = self.sftp_pem_passphrase
-                _logger.info(f"----------Login to SFTP via PEM Key.----------")
+                _logger.info(f"----------Login to SFTP via PEM/PPK Key.----------")
 
             ssh.connect(**connect_parameters)
             sftp_client = ssh.open_sftp()
@@ -116,9 +151,9 @@ class SFTPSyncing(models.Model):
             if not self._context.get('sftp_password'):
                 raise UserError(_("SFTP Connection Test Failed! Here is what we got instead:\n %s") % (e))
 
-        finally:
-            if temp_key_file_path and os.path.exists(temp_key_file_path):
-                os.unlink(temp_key_file_path)
+        # finally:
+        #     if temp_key_file_path and os.path.exists(temp_key_file_path):
+        #         os.unlink(temp_key_file_path)
 
     def action_check_sftp_disconnect(self):
         """
